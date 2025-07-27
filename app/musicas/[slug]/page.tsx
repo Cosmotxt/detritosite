@@ -13,7 +13,7 @@ type Song = {
   id: string
   title: string
   album: string
-  videoId: string
+  videoUrl: string
   spotify: string
   description: string
   lyrics: string[]
@@ -24,7 +24,7 @@ const songsData: { [key: string]: Song } = {
     id: "devaneios",
     title: "Devaneios de uma Colisão",
     album: "Sangue Visceral",
-    videoId: "https://www.youtube.com/watch?v=SV0c3asr--s",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753645851/colisao_pxlmre.mp4",
     spotify: "https://open.spotify.com/intl-pt/track/3qvTEcL1Rf5mxLoS3wTWJA?si=5a08b632028e4eb5",
     description: "",
     lyrics: [
@@ -95,7 +95,7 @@ const songsData: { [key: string]: Song } = {
     id: "momento-errado",
     title: "momento errado pra estar no escuro",
     album: "Sangue Visceral",
-    videoId: "momento_errado.mp4",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753643635/momento_errado_vrxwyz.mp4",
     spotify: "#",
     description: "",
     lyrics: [
@@ -161,7 +161,7 @@ const songsData: { [key: string]: Song } = {
     id: "entrelacamento-quantico",
     title: "Entrelaçamento Quântico",
     album: "Sangue Visceral",
-    videoId: "entrelacamento.mp4",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753642977/entrelacamento_xnhbcl.mp4",
     spotify: "",
     description: "",
     lyrics: [
@@ -214,7 +214,7 @@ const songsData: { [key: string]: Song } = {
     id: "ponto-cego",
     title: "Ponto Cego",
     album: "Sangue Visceral",
-    videoId: "ponto_cego.mp4",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753646047/ponto_cego_i7kwza.mp4",
     spotify: "",
     description: "",
     lyrics: [
@@ -266,7 +266,7 @@ const songsData: { [key: string]: Song } = {
     id: "letargia",
     title: "Letargia",
     album: "",
-    videoId: "letargia.mp4",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753646014/letargia_r16ryk.mp4",
     spotify: "",
     description: "",
     lyrics: [
@@ -328,7 +328,39 @@ const songsData: { [key: string]: Song } = {
       "chegou janeiro e eu não entendo quem eu sou",
       "Eu não gostei",
     ],
-
+  },
+  "coisas_dancantes": {
+    id: "coisas_dancantes",
+    title: "coisas_dancantes.mov",
+    album: "",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753645262/coisas_dancantes_xqfzt2.mp4",
+    spotify: "",
+    description: "",
+    lyrics: [
+      "Nessa estrada",
+      "Cem por hora",
+      "abre a janela e olha",
+      "nem parece tão rápido, né?",   
+      "",
+      "Os buracos ",
+      "não me incomodam",
+      "eu posso facilmente desviar",
+      "E essas luzes de vermelho me cegam",
+      "Eu vou acelerar",
+      "",
+      "",
+      "Mas parece que",
+      "quando cê vai embora",
+      "minha juventude seca",
+      "minha mente incompleta",
+      "não consegue proceder",
+      "",
+      "Eu te garanto que",
+      "de todas minhas memórias",
+      "você é minha predileta",
+      "madrugada tão deserta",
+      "que dá vontade de dançar"
+    ]
   },
 }
 
@@ -381,16 +413,11 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-video pixel-border bg-black overflow-hidden">
-                <video
-                  src={`/videos/${song.videoId}`}
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  className=""
-                />
-              </div>
+            <iframe
+            src={ song.videoUrl }
+            width="640"
+            height="360" 
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture" />
 
             </motion.div>
 
@@ -404,7 +431,8 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
               <div>
                 <PixelText
                   text={song.title}
-                  className="text-3xl sm:text-4xl text-red-500 font-bold font-pixel-alt mb-2"
+                  className="text-4xl text-left text-red-500 font-bold mb-2"
+                  glitchEffect={true}
                 />
                 <p className="text-white/80 font-pixel text-lg">{song.album}</p>
               </div>

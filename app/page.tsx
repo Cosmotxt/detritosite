@@ -51,35 +51,35 @@ export default function Home() {
       id: 1,
       name: "Ind",
       role: "A vocalista entrou no comecinho da banda e foi quem animou todo mundo a não desistir do projeto (achar vocalista em Fortaleza não é fácil)",
-      avatar: "/images/integrantes/ind.jpg",
+      avatar: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1753643608/ind_cwhpuv.jpg",
       bio: "",
     },
     {
       id: 2,
       name: "Reni",
       role: "Nosso guitarrista base tocava jazz até resolver aprender a fazer scream pra ser punk rocker",
-      avatar: "/images/integrantes/reni.jpg",
+      avatar: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1753643609/reni_i3q3us.jpg",
       bio: "",
     },
     {
       id: 5,
       name: "Gabs",
       role: "O guitarrista solo fechou a formação. Reza a lenda que o Gabs não sabia tocar, mas depois de sumir por 3 anos, ele voltou solando como um mestre.",
-      avatar: "/images/integrantes/gabs.jpg",
+      avatar: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1753643608/gabs_nzs7g0.jpg",
       bio: "",
     },
     {
       id: 3,
       name: "Vince",
       role: "Graças ao nosso baterista a banda tem um nome, sem ele seríamos só um bando de gente triste que toca sem bateria",
-      avatar: "/images/integrantes/vince.jpg",
+      avatar: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1753643610/vince_fb9aje.jpg",
       bio: "",
     },
     {
       id: 4,
       name: "Tilas",
       role: "Nosso baixista foi o integrante mais inusitado da banda, porque se ele não foi mandado dos céus, eu arrisco dizer que ganhamos na loteria.",
-      avatar: "/images/integrantes/tilas.jpg",
+      avatar: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1753643610/tilas_ota9hd.jpg",
       bio: "",
     },
 
@@ -103,7 +103,7 @@ export default function Home() {
         >
           <div className="flex justify-center">
             <Image
-              src="images/logo.png"
+              src="https://res.cloudinary.com/dw5b1yiwd/image/upload/v1753643414/logo_f9bovi.png"
               width={2000}
               height={760}
               className="mx-auto max-w-xl lg:max-w-5xl"

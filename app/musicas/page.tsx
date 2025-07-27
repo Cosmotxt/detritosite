@@ -103,7 +103,7 @@ export default function MusicasPage() {
           <div className="text-center mb-12">
             <PixelText
               text="MÚSICAS"
-              className="text-4xl sm:text-6xl md:text-7xl text-red-500 font-bold font-pixel-alt mb-4"
+              className="text-5xl lg:text-7xl text-red-500 font-bold mb-4"
               glitchEffect={true}
             />
             <p className="text-white/80 font-pixel text-sm max-w-2xl mx-auto">
