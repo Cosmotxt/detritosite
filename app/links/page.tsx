@@ -114,7 +114,7 @@ export default function LinksPage() {
                                 <div className="text-left">
                                     <PixelText
                                     text="LINKS OFICIAIS"
-                                    className="text-2xl sm:text-3xl md:text-4xl text-red-500 font-bold font-pixel-alt"
+                                    className="text-4xl sm:text-3xl md:text-4xl text-red-500 font-bold"
                                     glitchEffect={true}
                                     />
                                     {/* <p className="text-white/60 font-pixel text-sm">Links Oficiais</p> */}

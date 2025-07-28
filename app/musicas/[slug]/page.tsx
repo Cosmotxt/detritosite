@@ -28,67 +28,67 @@ const songsData: { [key: string]: Song } = {
     spotify: "https://open.spotify.com/intl-pt/track/3qvTEcL1Rf5mxLoS3wTWJA?si=5a08b632028e4eb5",
     description: "",
     lyrics: [
-    "Noite irracional",
-    "Não me entenda mal",
-    "Mas atravesso a cidade sem notar",
-    "Nessa escuridão",
-    "Eu perco a visão",
-    "Da estrada que eu vou acelerar",
-    "Eu penso muito",
-    "Eu penso demais",
-    "Me sinto mal pelo cara de trás",
-    "Ele não vai sobreviver",
-    "Mas eu não posso evitar",
-    "Eu não duvido do que eu sou capaz",
-    "Ultimamente eu não tenho paz",
-    "Eu não quero morrer",
-    "Mas isso não vai mudar",
-    "Amor",
-    "É inevitável o que tá pra acontecer",
-    "Eu sinto muito, mas o carro vai bater",
-    "Não dou certeza se vamos sobreviver",
-    "",
-    "Sendo sincera",
-    "Eu nem sequer tô aqui",
-    "Olha bem pra mim",
-    "Olha bem pra mim",
-    "Eu tô aí com você",
-    "Ontem me vi na TV",
-    "Eu tô em todo lugar",
-    "E eu não sei o porquê",
-    "As pessoas só falam quando pensam em nada",
-    "E acabam falando",
-    "Nada com nada",
-    "E eu penso muito",
-    "Eu penso demais",
-    "Já ficou fácil me deixar pra trás",
-    "Eu quero que me dê",
-    "Motivo pra não bater",
-    "Amor",
-    "É inevitável o que tá pra acontecer",
-    "Eu sinto muito, mas o carro vai bater",
-    "Não dou certeza se vamos sobreviver",
-    "",
-    "Isso não vai mudar",
-    "Isso não vai mudar",
-    "Isso não vai mudar",
-    "",
-    "Isso não vai mudar",
-    "Isso não vai mudar",
-    "Isso não vai mudar",
-    "",
-    "Isso não vai mudar (isso não vai mudar)",
-    "Isso não vai mudar (e nessa estrada molhada)",
-    "Isso não vai mudar (não vale parar)",
-    "",
-    "Isso não vai mudar (tudo que eu tenho a perder)",
-    "Isso não vai mudar (no fim, não vai importar)",
-    "Isso não vai mudar (e nessa estrada molhada)",
-    "",
-    "Isso não vai mudar (não vale parar)",
-    "Isso não vai mudar (tudo que eu tenho a perder)",
-    "Isso não vai mudar (no fim, não vai mudar)",
-  ],
+      "Noite irracional",
+      "Não me entenda mal",
+      "Mas atravesso a cidade sem notar",
+      "Nessa escuridão",
+      "Eu perco a visão",
+      "Da estrada que eu vou acelerar",
+      "Eu penso muito",
+      "Eu penso demais",
+      "Me sinto mal pelo cara de trás",
+      "Ele não vai sobreviver",
+      "Mas eu não posso evitar",
+      "Eu não duvido do que eu sou capaz",
+      "Ultimamente eu não tenho paz",
+      "Eu não quero morrer",
+      "Mas isso não vai mudar",
+      "Amor",
+      "É inevitável o que tá pra acontecer",
+      "Eu sinto muito, mas o carro vai bater",
+      "Não dou certeza se vamos sobreviver",
+      "",
+      "Sendo sincera",
+      "Eu nem sequer tô aqui",
+      "Olha bem pra mim",
+      "Olha bem pra mim",
+      "Eu tô aí com você",
+      "Ontem me vi na TV",
+      "Eu tô em todo lugar",
+      "E eu não sei o porquê",
+      "As pessoas só falam quando pensam em nada",
+      "E acabam falando",
+      "Nada com nada",
+      "E eu penso muito",
+      "Eu penso demais",
+      "Já ficou fácil me deixar pra trás",
+      "Eu quero que me dê",
+      "Motivo pra não bater",
+      "Amor",
+      "É inevitável o que tá pra acontecer",
+      "Eu sinto muito, mas o carro vai bater",
+      "Não dou certeza se vamos sobreviver",
+      "",
+      "Isso não vai mudar",
+      "Isso não vai mudar",
+      "Isso não vai mudar",
+      "",
+      "Isso não vai mudar",
+      "Isso não vai mudar",
+      "Isso não vai mudar",
+      "",
+      "Isso não vai mudar (isso não vai mudar)",
+      "Isso não vai mudar (e nessa estrada molhada)",
+      "Isso não vai mudar (não vale parar)",
+      "",
+      "Isso não vai mudar (tudo que eu tenho a perder)",
+      "Isso não vai mudar (no fim, não vai importar)",
+      "Isso não vai mudar (e nessa estrada molhada)",
+      "",
+      "Isso não vai mudar (não vale parar)",
+      "Isso não vai mudar (tudo que eu tenho a perder)",
+      "Isso não vai mudar (no fim, não vai mudar)",
+    ],
 
   },
   "momento-errado": {
@@ -262,7 +262,7 @@ const songsData: { [key: string]: Song } = {
       "Me aponte meu ponto cego",
     ],
   },
-    "letargia": {
+  "letargia": {
     id: "letargia",
     title: "Letargia",
     album: "",
@@ -340,7 +340,7 @@ const songsData: { [key: string]: Song } = {
       "Nessa estrada",
       "Cem por hora",
       "abre a janela e olha",
-      "nem parece tão rápido, né?",   
+      "nem parece tão rápido, né?",
       "",
       "Os buracos ",
       "não me incomodam",
@@ -413,11 +413,13 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
               transition={{ duration: 0.6 }}
               className="relative"
             >
-            <iframe
-            src={ song.videoUrl }
-            width="640"
-            height="360" 
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture" />
+              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-[32rem]">
+                <iframe
+                  src={song.videoUrl}
+                  className="aspect-video w-full"
+                  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                />
+              </div>
 
             </motion.div>
 
@@ -481,13 +483,12 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
-                      className={`${
-                        line.startsWith("[") && line.endsWith("]")
+                      className={`${line.startsWith("[") && line.endsWith("]")
                           ? "text-red-500 font-pixel text-sm font-bold mt-6 first:mt-0"
                           : line === ""
                             ? "h-4"
                             : "text-white/80 hover:text-white transition-colors cursor-pointer"
-                      }`}
+                        }`}
                     >
                       {line || "\u00A0"}
                     </motion.div>
