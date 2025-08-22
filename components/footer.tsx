@@ -15,7 +15,7 @@ export default function Footer() {
                         <div className="text-white/50 text-sm text-center md:text-right">
                             <p>&copy; {new Date().getFullYear()} Detrito Espacial. Todos os direitos reservados.</p>
                             <p className="mt-1">
-                                <Link href="/links" className="text-white/70 hover:text-red-500 transition-colors">
+                                <Link href="/links" className="text-white/70 hover:text-red-500 transition-colors underline">
                                     Links Úteis
                                 </Link>
                             </p>

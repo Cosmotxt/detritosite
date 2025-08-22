@@ -25,6 +25,7 @@ import {
 } from "lucide-react"
 import { 
     SiInstagram,
+    SiYoutube,
     SiSpotify, 
     SiTiktok,
     SiX
@@ -44,12 +45,22 @@ type LinkItem = {
 }
 
 const links: LinkItem[] = [
+{
+    id: "live_session",
+    title: "Live Session - Estúdio em foco",
+    subtitle: "Deve ser o que você procura",
+    description: "Detrito Espacial tocou três músicas em uma live session no Estúdio Caixa de Fósforo. Assista!",
+    url: "https://youtu.be/MwqPi_zWjdE?si=W4j0Tk_fn1-YxV-A",
+    icon: <SiYoutube className="w-6 h-6" />,
+    color: "#FF0000",
+    featured: true,
+  },
   {
     id: "spotify",
     title: "Spotify",
     subtitle: "Ouça no Spotify",
-    description: "Nossa discografia completa disponível para streaming",
-    url: "https://spotify.com",
+    description: "Nos adcione na sua playlist :)",
+    url: "https://open.spotify.com/artist/3mxopIe9nts1L5O5SzFgBu?si=HQcf2uGfTSCO5rTpGzDZqQ",
     icon: <SiSpotify className="w-6 h-6" />,
     color: "#1DB954",
     featured: true,
@@ -68,7 +79,7 @@ const links: LinkItem[] = [
     id: "x",
     title: "x",
     subtitle: "@detritohc",
-    description: "Vamos ser amigos",
+    description: "Vamos ser amigosss",
     url: "https://x.com/detritohc",
     icon: <SiX className="w-4 h-4" />,
     color: "#fffff0",
@@ -77,7 +88,7 @@ const links: LinkItem[] = [
     id: "tiktok",
     title: "TikTok",
     subtitle: "@detritoespacial",
-    description: "Conteúdo criativo e viral da banda",
+    description: "Só besteira",
     url: "https://tiktok.com/@detrito.espacial",
     icon: <SiTiktok className="w-4 h-4" />,
     color: "#69C9D0",
