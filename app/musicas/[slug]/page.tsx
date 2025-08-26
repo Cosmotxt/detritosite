@@ -329,8 +329,8 @@ const songsData: { [key: string]: Song } = {
       "Eu não gostei",
     ],
   },
-  "coisas_dancantes": {
-    id: "coisas_dancantes",
+  "coisas-dancantes": {
+    id: "coisas-dancantes",
     title: "coisas_dancantes.mov",
     album: "",
     videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753645262/coisas_dancantes_xqfzt2.mp4",

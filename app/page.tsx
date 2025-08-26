@@ -144,7 +144,7 @@ export default function Home() {
       {/* Latest Release */}
       <section className="py-16 relative" id="musicas">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -154,17 +154,14 @@ export default function Home() {
             >
               <div className="pixel-border p-1 bg-black inline-block relative">
                 <Image
-                  src="/images/capa_devaneios.png"
-                  alt="Devaneios de uma Colisão"
+                  src="https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png"
+                  alt="capa do EP Momento Errado Pra Estar no Escuro"
                   width={500}
                   height={500}
                   className="w-full max-w-md mx-auto"
                 />
                 <div className="absolute inset-0 bg-red-500/10 mix-blend-overlay"></div>
               </div>
-              <div className="absolute -inset-2 border border-red-500/30 -z-10"></div>
-              <div className="absolute -inset-3 border border-red-500/20 -z-20"></div>
-              <div className="absolute -inset-4 border border-red-500/10 -z-30"></div>
             </motion.div>
 
             <motion.div
@@ -180,7 +177,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-red-500/20 blur-sm -z-10"></div>
               </h2>
 
-              <p className="text-white/80 mb-6">Chegou! Ouça nas suas plataformas favoritas</p>
+              <p className="text-white/80 mb-6 text-xl">Chegou! Ouça nas suas plataformas favoritas</p>
 
               <div className="grid grid-cols-2 sm:max-w-xl gap-3 mb-8">
                 {[
