@@ -7,28 +7,20 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import {
-  Music,
-  Instagram,
-  Youtube,
-  Mail,
-  Calendar,
-  ShoppingBag,
-  Headphones,
-  Radio,
-  Ticket,
-  MessageCircle,
   ExternalLink,
   Copy,
   Check,
   ArrowRight,
   Star,
+  Ticket,
+  Shirt
 } from "lucide-react"
 import { 
     SiInstagram,
     SiYoutube,
     SiSpotify, 
     SiTiktok,
-    SiX
+    SiX,
 } from '@icons-pack/react-simple-icons'
 import StarField from "@/components/star-field"
 import PixelText from "@/components/pixel-text"
@@ -60,12 +52,12 @@ const links: LinkItem[] = [
 {
     id: "merch",
     title: "CAMISETAS DA DETRITO ESPACIAL",
-    subtitle: "Estampas exclusivas, edição limitada. Todo o dinheiro será investido para o nosso album! apoie a cena  independente :)",
+    subtitle: "Todo o dinheiro será investido em nosso album! apoie a cena  independente :)",
     description: "USE O NOSSO CUPOM ''DETRITOESPACIAL'' E GANHE 10% DE DESCONTO",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476277/camiseta_licupd.webp",
     url: "https://www.numetalwear.com.br/numetalwear/collections/detrito-espacial?page=1",
-    icon: <SiYoutube className="w-6 h-6" />,
-    color: "#FF0000",
+    icon: <Shirt className="w-6 h-6" />,
+    color: "#034c9b",
     featured: true,
 },
 {
@@ -75,8 +67,8 @@ const links: LinkItem[] = [
     description: "Dia 15 de Outubro a Detrito Espacial vai tocar no Emozero Fest! vai ser um terror",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756477589/Sem_t%C3%ADtulo_m7a0e2.jpg",
     url: "https://www.sympla.com.br/evento/libertariamente-festival-gritando-hc-em-fortaleza-ce/2980568?referrer=l.instagram.com",
-    icon: <SiYoutube className="w-6 h-6" />,
-    color: "#FF0000",
+    icon: <Ticket className="w-6 h-6" />,
+    color: "#f5c207",
     featured: true,
 },
 {
@@ -86,8 +78,8 @@ const links: LinkItem[] = [
     description: "Dia 15 de Novembro a Detrito Espacial vai abrir pro Gritando HC em Fortaleza, vai ser FODA!",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476623/68437928e480a-lg_vt3rni.jpg",
     url: "https://www.sympla.com.br/evento/libertariamente-festival-gritando-hc-em-fortaleza-ce/2980568?referrer=l.instagram.com",
-    icon: <SiYoutube className="w-6 h-6" />,
-    color: "#FF0000",
+    icon: <Ticket className="w-6 h-6" />,
+    color: "#f5c207",
     featured: true,
 },
 {
@@ -225,7 +217,7 @@ export default function LinksPage() {
                                         </div>
 
                                         <div className="flex-1 min-w-0">
-                                            <h3 className="font-pixel-alt text-white text-lg mb-1 group-hover:text-red-500 transition-colors">
+                                            <h3 className="font-pixel-alt leading-none text-white/90 font-semibold text-lg mb-1 group-hover:text-red-500 transition-colors">
                                                 {link.title}
                                             </h3>
                                             <p className="text-white/70 font-pixel text-xs mb-2">{link.subtitle}</p>
@@ -238,7 +230,7 @@ export default function LinksPage() {
                                         )}
                                     </div>
 
-                                    <p className="text-white  text-sm leading-relaxed">{link.description}</p>
+                                    <p className="text-white/80 text-sm leading-relaxed">{link.description}</p>
 
                                     {link.imageUrl &&
                                         <div className="aspect-video overflow-hidden mt-7">
