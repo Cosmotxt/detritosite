@@ -38,6 +38,7 @@ type LinkItem = {
   title: string
   subtitle: string
   description: string
+  imageUrl?: string
   url: string
   icon: React.ReactNode
   color: string
@@ -46,10 +47,55 @@ type LinkItem = {
 
 const links: LinkItem[] = [
 {
+    id: "momento-errado",
+    title: "Momento Errado Para Estar No Escuro (Official Visualizer)",
+    subtitle: "Novo Lançamento",
+    description: "",
+    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png",
+    url: "https://www.youtube.com/watch?v=jOGH0ypnxVY",
+    icon: <SiYoutube className="w-6 h-6" />,
+    color: "#FF0000",
+    featured: true,
+},
+{
+    id: "merch",
+    title: "CAMISETAS DA DETRITO ESPACIAL",
+    subtitle: "Estampas exclusivas, edição limitada. Todo o dinheiro será investido para o nosso album! apoie a cena  independente :)",
+    description: "USE O NOSSO CUPOM ''DETRITOESPACIAL'' E GANHE 10% DE DESCONTO",
+    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476277/camiseta_licupd.webp",
+    url: "https://www.numetalwear.com.br/numetalwear/collections/detrito-espacial?page=1",
+    icon: <SiYoutube className="w-6 h-6" />,
+    color: "#FF0000",
+    featured: true,
+},
+{
+    id: "ingresso-halloween",
+    title: "Ingresso para o Halloween Emozero Fest 1° EDIÇÃO",
+    subtitle: "VESTE TUA FANTASIA E VEM CURTIR COM A GENTE!",
+    description: "Dia 15 de Outubro a Detrito Espacial vai tocar no Emozero Fest! vai ser um terror",
+    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756477589/Sem_t%C3%ADtulo_m7a0e2.jpg",
+    url: "https://www.sympla.com.br/evento/libertariamente-festival-gritando-hc-em-fortaleza-ce/2980568?referrer=l.instagram.com",
+    icon: <SiYoutube className="w-6 h-6" />,
+    color: "#FF0000",
+    featured: true,
+},
+{
+    id: "ingresso-gritandohc",
+    title: "INGRESSO PARA O SHOW DO GRITANDO HC",
+    subtitle: "Garanta seu ingresso :)",
+    description: "Dia 15 de Novembro a Detrito Espacial vai abrir pro Gritando HC em Fortaleza, vai ser FODA!",
+    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476623/68437928e480a-lg_vt3rni.jpg",
+    url: "https://www.sympla.com.br/evento/libertariamente-festival-gritando-hc-em-fortaleza-ce/2980568?referrer=l.instagram.com",
+    icon: <SiYoutube className="w-6 h-6" />,
+    color: "#FF0000",
+    featured: true,
+},
+{
     id: "live_session",
     title: "Live Session - Estúdio em foco",
-    subtitle: "Deve ser o que você procura",
-    description: "Detrito Espacial tocou três músicas em uma live session no Estúdio Caixa de Fósforo. Assista!",
+    subtitle: "Três músicas ao vivaço direto do estúdio",
+    description: "",
+    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756474769/maxresdefault_udilt7.jpg",
     url: "https://youtu.be/MwqPi_zWjdE?si=W4j0Tk_fn1-YxV-A",
     icon: <SiYoutube className="w-6 h-6" />,
     color: "#FF0000",
@@ -65,15 +111,14 @@ const links: LinkItem[] = [
     color: "#1DB954",
     featured: true,
   },
-  {
-    id: "instagram",
-    title: "Instagram",
+    {
+    id: "tiktok",
+    title: "TikTok",
     subtitle: "@detritoespacial",
-    description: "Fotos dos bastidores, stories e novidades da banda",
-    url: "https://instagram.com/detritoespacial",
-    icon: <SiInstagram className="w-5 h-5" />,
-    color: "#E4405F",
-    featured: true,
+    description: "Só besteira",
+    url: "https://tiktok.com/@detrito.espacial",
+    icon: <SiTiktok className="w-4 h-4" />,
+    color: "#69C9D0",
   },
   {
     id: "x",
@@ -85,13 +130,14 @@ const links: LinkItem[] = [
     color: "#fffff0",
   },
   {
-    id: "tiktok",
-    title: "TikTok",
+    id: "instagram",
+    title: "Instagram",
     subtitle: "@detritoespacial",
-    description: "Só besteira",
-    url: "https://tiktok.com/@detrito.espacial",
-    icon: <SiTiktok className="w-4 h-4" />,
-    color: "#69C9D0",
+    description: "Fotos dos bastidores, stories e novidades da banda",
+    url: "https://instagram.com/detritoespacial",
+    icon: <SiInstagram className="w-5 h-5" />,
+    color: "#E4405F",
+    featured: true,
   },
     
 ]
@@ -166,6 +212,7 @@ export default function LinksPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
+
                             <Link href={link.url} target={link.url.startsWith("http") ? "_blank" : "_self"}>
                                 <div className="group relative bg-black/80 border border-red-500/30 hover:border-red-500/60 hover:bg-red-500/5 transition-all duration-300 rounded-xl p-6 h-full">
                                     {/* Featured Badge */}
@@ -184,17 +231,30 @@ export default function LinksPage() {
                                             <p className="text-white/70 font-pixel text-xs mb-2">{link.subtitle}</p>
                                         </div>
 
+
+
                                         {link.url.startsWith("http") && (
                                         <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-red-500 transition-colors flex-shrink-0" />
                                         )}
                                     </div>
 
-                                    <p className="text-white/60 text-sm leading-relaxed">{link.description}</p>
+                                    <p className="text-white  text-sm leading-relaxed">{link.description}</p>
 
+                                    {link.imageUrl &&
+                                        <div className="aspect-video overflow-hidden mt-7">
+                                            <Image 
+                                                src={link.imageUrl} 
+                                                width={300} height={300} 
+                                                alt="capa do video" 
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                            />
+                                        </div>
+                                    }
                                     <div className="mt-4 flex items-center text-white/40 group-hover:text-red-500 transition-colors">
                                         <span className="font-pixel text-xs">ACESSAR</span>
                                         <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
                                     </div>
+
                                 </div>
                             </Link>
                             </motion.div>
