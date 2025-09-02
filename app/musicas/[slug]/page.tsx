@@ -95,7 +95,7 @@ const songsData: { [key: string]: Song } = {
     id: "momento-errado",
     title: "momento errado pra estar no escuro",
     album: "Sangue Visceral",
-    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753643635/momento_errado_vrxwyz.mp4",
+    videoUrl: "https://www.youtube.com/watch?v=jOGH0ypnxVY",
     spotify: "#",
     description: "",
     lyrics: [
