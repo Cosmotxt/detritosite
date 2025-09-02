@@ -53,7 +53,7 @@ const links: LinkItem[] = [
     id: "merch",
     title: "CAMISETAS DA DETRITO ESPACIAL",
     subtitle: "Todo o dinheiro será investido em nosso album! apoie a cena  independente :)",
-    description: "USE O NOSSO CUPOM ''DETRITOESPACIAL'' E GANHE 5% DE DESCONTO",
+    description: "USE O NOSSO CUPOM ''DETRITOESPACIAL'' E GANHE 5% DE DESCONTO ★",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476277/camiseta_licupd.webp",
     url: "https://www.numetalwear.com.br/numetalwear/collections/detrito-espacial?page=1",
     icon: <Shirt className="w-6 h-6" />,
@@ -85,7 +85,7 @@ const links: LinkItem[] = [
 {
     id: "live_session",
     title: "Live Session - Estúdio em foco",
-    subtitle: "Três músicas ao vivaço direto do estúdio",
+    subtitle: "Três músicas ao vivaço direto do estúdio Caixa de Fósforo",
     description: "",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756474769/maxresdefault_udilt7.jpg",
     url: "https://youtu.be/MwqPi_zWjdE?si=W4j0Tk_fn1-YxV-A",

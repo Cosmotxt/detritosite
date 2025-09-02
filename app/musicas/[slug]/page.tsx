@@ -13,6 +13,7 @@ type Song = {
   id: string
   title: string
   album: string
+  youtube?: boolean
   videoUrl: string
   spotify: string
   description: string
@@ -95,6 +96,7 @@ const songsData: { [key: string]: Song } = {
     id: "momento-errado",
     title: "momento errado pra estar no escuro",
     album: "Sangue Visceral",
+    youtube: true,
     videoUrl: "https://www.youtube.com/watch?v=jOGH0ypnxVY",
     spotify: "#",
     description: "",
@@ -413,13 +415,20 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-[32rem]">
+              {song.youtube ? (
+                <iframe
+                  src={song.videoUrl.replace("watch?v=", "embed/")}
+                  className="aspect-video w-full"
+                  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                />
+
+              ) : (
                 <iframe
                   src={song.videoUrl}
                   className="aspect-video w-full"
                   allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                 />
-              </div>
+              )}
 
             </motion.div>
 

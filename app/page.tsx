@@ -259,7 +259,7 @@ export default function Home() {
               alt={'gatinho tocando guitarra'}
               className="hidden lg:flex w-48"
             />
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -302,7 +302,7 @@ export default function Home() {
                   Enviar Mensagem
                 </PixelButton>
               </form>
-            </motion.div>
+            </motion.div> */}
 
             <img
               src={'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExajk0emFsc3dzanV1cnc2MXYyYWV4eHpndTJhZmZmdWUzZWlvODlwMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/10HTAgEA1o5A9a/giphy.gif'}
