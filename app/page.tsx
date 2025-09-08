@@ -12,10 +12,16 @@ import TourDate from "@/components/tour-date"
 import MemberCard from "@/components/member-card"
 import { motion } from "framer-motion"
 import Header from "@/components/header"
+import { measureMemory } from "vm"
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0)
-  const [activeSection, setActiveSection] = useState("home")
+  const [ scrollY, setScrollY ] = useState(0)
+  const [ activeSection, setActiveSection ] = useState("home")
+  const [ data, setData ] = useState([]);
+  const [ nome, setNome ] = useState('')
+  const [ email, setEmail ] = useState('')
+  const [ message, setMessage ] = useState('')
+  const [ errorMsg, setErrorMsg ] = useState('')
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
     music: null,
@@ -23,6 +29,36 @@ export default function Home() {
     about: null,
     contact: null,
   })
+
+  useEffect(() => {
+    if(!email.includes('@') && !email.endsWith('.com')) {
+      setErrorMsg('E-mail inválido! e-mails geralmente tem @ e .com')
+      return;
+    }
+    if(!message) {
+      setErrorMsg('Escreve alguma coisaaaa')
+      return;
+    }
+  }, [message, email])
+
+  async function handlerContact(e:any) {
+    e.preventDefault();
+
+    const response = await fetch('https://backend-site-detrito.onrender.com/contato', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: nome,
+        email: email,
+        message: message
+      }),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    });
+    const data = await response.json();
+    setData(data);
+  }
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -259,7 +295,7 @@ export default function Home() {
               alt={'gatinho tocando guitarra'}
               className="hidden lg:flex w-48"
             />
-            {/* <motion.div
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -267,7 +303,7 @@ export default function Home() {
               className="bg-black/50 border border-red-500/30 p-6"
             >
               <h3 className="font-pixel text-xl text-red-500 mb-4">ENVIE UMA MENSAGEM</h3>
-              <form className="space-y-4">
+              <form onSubmit={handlerContact} noValidate className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-pixel mb-1">
                     NOME
@@ -275,6 +311,8 @@ export default function Home() {
                   <input
                     type="text"
                     id="name"
+                    value={nome}
+                    onChange={e => setNome(e.target.value)}
                     className="w-full bg-black/70 border border-red-500/30 px-3 py-2 text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
@@ -285,6 +323,8 @@ export default function Home() {
                   <input
                     type="email"
                     id="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     className="w-full bg-black/70 border border-red-500/30 px-3 py-2 text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
@@ -295,6 +335,8 @@ export default function Home() {
                   <textarea
                     id="message"
                     rows={5}
+                    value={message}
+                    onChange={e => setMessage(e.target.value)}
                     className="w-full bg-black/70 border border-red-500/30 px-3 py-2 text-white focus:outline-none focus:border-red-500"
                   ></textarea>
                 </div>
@@ -302,7 +344,7 @@ export default function Home() {
                   Enviar Mensagem
                 </PixelButton>
               </form>
-            </motion.div> */}
+            </motion.div>
 
             <img
               src={'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExajk0emFsc3dzanV1cnc2MXYyYWV4eHpndTJhZmZmdWUzZWlvODlwMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/10HTAgEA1o5A9a/giphy.gif'}
@@ -310,14 +352,14 @@ export default function Home() {
               className="hidden lg:flex ml-6 w-48"
             />
 
-            {/* <motion.div
+            {/*<motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
               className="bg-black/50 border border-red-500/30 p-6"
             >
-              <h3 className="font-pixel text-xl text-red-500 mb-4">INFORMAÇÕES</h3>
+               <h3 className="font-pixel text-xl text-red-500 mb-4">INFORMAÇÕES</h3>
 
               <div className="space-y-4">
                 <div>
@@ -363,8 +405,8 @@ export default function Home() {
                     </PixelButton>
                   </div>
                 </div>
-              </div>
-            </motion.div> */}
+              </div> 
+            </motion.div>*/}
           </div>
         </div>
       </section>     
