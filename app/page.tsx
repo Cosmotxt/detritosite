@@ -21,7 +21,7 @@ export default function Home() {
   const [ nome, setNome ] = useState('')
   const [ email, setEmail ] = useState('')
   const [ message, setMessage ] = useState('')
-  const [ errorMsg, setErrorMsg ] = useState('')
+  const [ logMsg, setLogMsg ] = useState('')
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
     music: null,
@@ -31,16 +31,16 @@ export default function Home() {
 
   const validator = () => {
     if(!email.includes('@') || !email.endsWith('.com')) {
-      setErrorMsg('E-mail inválido! e-mails geralmente tem @ e .com')
+      setLogMsg('E-mail inválido! e-mails geralmente tem @ e .com')
       setTimeout(() => {
-        setErrorMsg('');
+        setLogMsg('');
       }, 5000)
       return;
     }
     if(!message) {
-      setErrorMsg('Esqueceu de escrever a mensagem!')
+      setLogMsg('Esqueceu de escrever a mensagem!')
       setTimeout(() => {
-        setErrorMsg('');
+        setLogMsg('');
       }, 5000)
       return;
     }
@@ -61,7 +61,12 @@ export default function Home() {
       }
     });
     const data = await response.json();
-    setData(data);
+    if(data.success) {
+      setData(data);
+      setTimeout(() => {
+        setLogMsg('Mensagem enviada! vamos ler com carinho :)')
+      }, 5000)
+    }
   }
 
 
@@ -307,15 +312,15 @@ export default function Home() {
               viewport={{ once: true }}
               className="bg-black/80 border border-red-500/30 p-6 relative"
             >
-              {errorMsg ? (
+              {logMsg ? (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="w-full p-5 bg-red-700 text-center flex justify-center items-center absolute top-0 left-0"
+                  className={`w-full p-5 text-center flex justify-center items-center absolute top-0 left-0 ${logMsg === 'Mensagem enviada! vamos ler com carinho :)' ? 'bg-green-700' : 'bg-red-700'}`}
                 >
-                  {errorMsg}
+                  {logMsg}
                 </motion.div>
               ) : null}
               
