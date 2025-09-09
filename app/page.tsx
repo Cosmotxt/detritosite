@@ -25,21 +25,26 @@ export default function Home() {
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
     music: null,
-    tour: null,
     about: null,
     contact: null,
   })
 
-  useEffect(() => {
-    if(!email.includes('@') && !email.endsWith('.com')) {
+  const validator = () => {
+    if(!email.includes('@') || !email.endsWith('.com')) {
       setErrorMsg('E-mail inválido! e-mails geralmente tem @ e .com')
+      setTimeout(() => {
+        setErrorMsg('');
+      }, 5000)
       return;
     }
     if(!message) {
-      setErrorMsg('Escreve alguma coisaaaa')
+      setErrorMsg('Esqueceu de escrever a mensagem!')
+      setTimeout(() => {
+        setErrorMsg('');
+      }, 5000)
       return;
     }
-  }, [message, email])
+  }
 
   async function handlerContact(e:any) {
     e.preventDefault();
@@ -147,17 +152,17 @@ export default function Home() {
             />
             {/* <PixelText
               text="DETRITO ESPACIAL"
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-red-500 font-bold font-pixelify"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-red-500 font-bold font-syneMono"
               pixelated={true}
               glitchEffect={true}
             /> */}
           </div>
 
-          <p className="max-w-2xl mx-auto mb-8 text-white/80 font-pixelify text-sm sm:text-2xl">
+          <p className="max-w-2xl mx-auto mb-8 text-white/80 font-syneMono text-sm sm:text-2xl">
             Grintando os sentimentos que não podem ser contidos
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 font-pixelify">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 font-syneMono">
             <PixelButton href="/links" variant="secondary">
               <Music className="w-6 h-6 mr-2" />
               Ouça Agora
@@ -179,7 +184,7 @@ export default function Home() {
 
       {/* Latest Release */}
       <section className="py-16 relative" id="musicas">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 font-syneMono">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -206,9 +211,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-pixelify text-3xl sm:text-4xl text-white mb-4 inline-block relative">
+              <h2 className="font-syneMono text-3xl sm:text-4xl text-white mb-4 inline-block relative">
                 <span className="relative z-10 font-extrabold uppercase text-red-500">
-                  Momento errado pra estar no escuro
+                  Momento errado para estar no escuro
                 </span>
                 <div className="absolute inset-0 bg-red-500/20 blur-sm -z-10"></div>
               </h2>
@@ -245,7 +250,7 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="font-pixel text-3xl sm:text-4xl text-white mb-4 inline-block relative">
+            <h2 className="font-syneMono text-3xl sm:text-4xl text-white mb-4 inline-block relative">
               <span className="relative z-10">A BANDA</span>
               <div className="absolute inset-0 bg-red-500/20 blur-sm -z-10"></div>
             </h2>
@@ -282,8 +287,8 @@ export default function Home() {
       <section id="contato" className="py-16 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-pixel text-3xl sm:text-4xl text-white mb-4 inline-block relative">
-              <span className="relative z-10">CONTATO</span>
+            <h2 className="text-3xl sm:text-4xl text-white mb-4 inline-block relative">
+              <span className="font-syneMono relative z-10">CONTATO</span>
               <div className="absolute inset-0 bg-red-500/20 blur-sm -z-10"></div>
             </h2>
             <div className="w-24 h-1 bg-red-500 mx-auto"></div>
@@ -300,12 +305,24 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-black/50 border border-red-500/30 p-6"
+              className="bg-black/80 border border-red-500/30 p-6 relative"
             >
-              <h3 className="font-pixel text-xl text-red-500 mb-4">ENVIE UMA MENSAGEM</h3>
-              <form onSubmit={handlerContact} noValidate className="space-y-4">
+              {errorMsg ? (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="w-full p-5 bg-red-700 text-center flex justify-center items-center absolute top-0 left-0"
+                >
+                  {errorMsg}
+                </motion.div>
+              ) : null}
+              
+              <h3 className=" font-sans text-xl text-red-500 mb-5 uppercase text-center">Fale com a gente!</h3>
+              <form onSubmit={handlerContact} noValidate className="space-y-4 font-sans">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-pixel mb-1">
+                  <label htmlFor="name" className="block text-sm mb-1">
                     NOME
                   </label>
                   <input
@@ -317,7 +334,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-pixel mb-1">
+                  <label htmlFor="email" className="block text-sm mb-1">
                     EMAIL
                   </label>
                   <input
@@ -329,7 +346,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-pixel mb-1">
+                  <label htmlFor="message" className="block text-sm mb-1">
                     MENSAGEM
                   </label>
                   <textarea
@@ -340,7 +357,7 @@ export default function Home() {
                     className="w-full bg-black/70 border border-red-500/30 px-3 py-2 text-white focus:outline-none focus:border-red-500"
                   ></textarea>
                 </div>
-                <PixelButton type="submit" variant="primary" className="w-full">
+                <PixelButton type="submit" variant="primary" onClick={validator} className="w-full">
                   Enviar Mensagem
                 </PixelButton>
               </form>
@@ -359,21 +376,21 @@ export default function Home() {
               viewport={{ once: true }}
               className="bg-black/50 border border-red-500/30 p-6"
             >
-               <h3 className="font-pixel text-xl text-red-500 mb-4">INFORMAÇÕES</h3>
+               <h3 className="text-xl text-red-500 mb-4">INFORMAÇÕES</h3>
 
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-pixel text-sm text-white/90 mb-1">BOOKING & MANAGEMENT</h4>
+                  <h4 className="text-sm text-white/90 mb-1">BOOKING & MANAGEMENT</h4>
                   <p className="text-white/70">contato@detritoespacial.com</p>
                 </div>
 
                 <div>
-                  <h4 className="font-pixel text-sm text-white/90 mb-1">IMPRENSA</h4>
+                  <h4 className="text-sm text-white/90 mb-1">IMPRENSA</h4>
                   <p className="text-white/70">imprensa@detritoespacial.com</p>
                 </div>
 
                 <div>
-                  <h4 className="font-pixel text-sm text-white/90 mb-1">REDES SOCIAIS</h4>
+                  <h4 className="text-sm text-white/90 mb-1">REDES SOCIAIS</h4>
                   <div className="flex gap-4 mt-2">
                     {["instagram", "spotify", "youtube", "tiktok", "bandcamp"].map((platform) => (
                       <Link
@@ -389,7 +406,7 @@ export default function Home() {
                 </div>
 
                 <div className="pt-4 mt-4 border-t border-red-500/30">
-                  <h4 className="font-pixel text-sm text-white/90 mb-3">NEWSLETTER</h4>
+                  <h4 className="text-sm text-white/90 mb-3">NEWSLETTER</h4>
                   <p className="text-white/70 text-sm mb-3">
                     Receba novidades, datas de shows e lançamentos exclusivos:
                   </p>

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import { syneMono } from "./app/fonts"
 
 const config: Config = {
   darkMode: ["class"],
@@ -11,7 +12,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        pixelify: ['var(--font-pixelify)', 'monospace'],
+        syneMono: ['var(--font-syne-mono)', 'monospace'],
       },
       colors: {
         background: "hsl(var(--background))",

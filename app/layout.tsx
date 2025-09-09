@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { pixelify } from './fonts'
+import { syneMono } from './fonts'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 
@@ -15,10 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-br" className={pixelify.variable}> 
+    <html lang="pt-br" className={syneMono.variable}> 
       <body>
         <Header />
-        <body>{children}</body>
+        <body className='font-syneMono'>{children}</body>
         <Footer />
       </body>
     </html>

@@ -18,7 +18,7 @@ type MemberCardProps = {
 const MemberCard = ({ member }: MemberCardProps) => {
   return (
     <motion.div className="group relative" whileHover={{ y: -5 }}>
-      <div className="pixel-border p-1 bg-black">
+      <div className="pixel-border font-syneMono p-1 bg-black">
         <div className="relative aspect-[2/3] overflow-hidden">
           <Image
             src={member.avatar || "/placeholder.svg"}

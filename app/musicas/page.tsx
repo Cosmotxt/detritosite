@@ -30,7 +30,7 @@ const songs: Song[] = [
   },
   {
     id: "momento-errado",
-    title: "momento errado pra estar no escuro",
+    title: "Momento Errado Para Estar No Escuro",
     album: "Sangue Visceral",
     thumbnail: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png",
     videoUrl: "",
@@ -48,7 +48,7 @@ const songs: Song[] = [
   },
   {
     id: "ponto-cego",
-    title: "ponto cego",
+    title: "Ponto Cego",
     album: "Sangua Visceral",
     thumbnail: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png",
     videoUrl: "",

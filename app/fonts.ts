@@ -1,9 +1,9 @@
-import { Share_Tech_Mono } from 'next/font/google';
+import { Syne_Mono } from 'next/font/google';
 
-export const pixelify = Share_Tech_Mono(
+export const syneMono = Syne_Mono(
     {
         subsets:['latin'],
-        variable: '--font-pixelify',
+        variable: '--font-syne-mono',
         weight: '400',
         
     }
