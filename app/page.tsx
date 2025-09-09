@@ -63,8 +63,9 @@ export default function Home() {
     const data = await response.json();
     if(data.success) {
       setData(data);
+      setLogMsg('Mensagem enviada! vamos ler com carinho :)')
       setTimeout(() => {
-        setLogMsg('Mensagem enviada! vamos ler com carinho :)')
+        setLogMsg('')
       }, 5000)
     }
   }
@@ -362,6 +363,7 @@ export default function Home() {
                     className="w-full bg-black/70 border border-red-500/30 px-3 py-2 text-white focus:outline-none focus:border-red-500"
                   ></textarea>
                 </div>
+
                 <PixelButton type="submit" variant="primary" onClick={validator} className="w-full">
                   Enviar Mensagem
                 </PixelButton>
