@@ -165,7 +165,7 @@ export default function Home() {
           </div>
 
           <p className="max-w-2xl mx-auto mb-8 text-white/80 font-syneMono text-sm sm:text-2xl">
-            Grintando os sentimentos que não podem ser contidos
+            Gritando os sentimentos que não podem ser contidos
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 font-syneMono">
@@ -201,7 +201,7 @@ export default function Home() {
             >
               <div className="pixel-border p-1 bg-black inline-block relative">
                 <Image
-                  src="https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png"
+                  src="https://res.cloudinary.com/dw5b1yiwd/image/upload/v1759150233/capa-momento-errado_tljpko.jpg"
                   alt="capa do EP Momento Errado Pra Estar no Escuro"
                   width={500}
                   height={500}
@@ -228,11 +228,11 @@ export default function Home() {
 
               <div className="grid grid-cols-2 sm:max-w-xl gap-3 mb-8">
                 {[
-                  ['Spotify', 'https://open.spotify.com/intl-pt/artist/3mxopIe9nts1L5O5SzFgBu?si=AIQWbuWrTveHczfV-AtB-Q'],
-                  ['Deezer', 'https://www.deezer.com/br/artist/293432921'],
+                  ['Spotify', 'https://open.spotify.com/intl-pt/track/0DlgcjQKApsXB3ltrvzx6M?si=cf330559c9a04eb6'],
+                  ['Deezer', 'https://link.deezer.com/s/31bbkymMPD0sp0oBiFiXy'],
                   ['Apple Music', 'https://music.apple.com/br/artist/detrito-espacial/1784592297'],
-                  ['YouTube Music', 'https://music.youtube.com/channel/UCew4VT6GE48EftVBFxhA_lw'],
-                  ['Amazon Music', 'https://music.amazon.com.br/artists/B0DQ2KJ83N/detrito-espacial'],
+                  ['YouTube Music', 'https://music.youtube.com/playlist?list=OLAK5uy_krRQrWWeYbCN7y4T_BQwak0IdiVMwC_Qc&si=YTRrns1ixfaCuUws'],
+                  ['Amazon Music', 'https://music.amazon.com.br/albums/B0FS4TR6L7?marketplaceId=ART4WZ8MWBX2Y&musicTerritory=BR&ref=dm_sh_l3naSwrCODzgEOjGX4B93uxW1&trackAsin=B0FS58FYH2'],
                   ['Explore outras músicas', '/musicas']
                 ].map((platform) => (
                   <Link

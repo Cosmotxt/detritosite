@@ -1,0 +1,29 @@
+{
+    "item": [
+        {
+            "productImage": "https://rsv-ink-images.ink.rsvcloud.com/images/product_v2/main_image/eb16bb4ec8d38d56601f22f7caff22fa.webp",
+            "productTitle": "Camisa Detrito",
+            "productPrice": "R$ 99,90",
+            "productUrl": "/" 
+        },
+        {
+            "productImage": "https://rsv-ink-images.ink.rsvcloud.com/images/product_v2/main_image/eb16bb4ec8d38d56601f22f7caff22fa.webp",
+            "productTitle": "Regata Detrito",
+            "productPrice": "R$ 60,90",
+            "productUrl": "/" 
+        },
+        {
+            "productImage": "https://rsv-ink-images.ink.rsvcloud.com/images/product_v2/main_image/eb16bb4ec8d38d56601f22f7caff22fa.webp",
+            "productTitle": "Moletom Detrito",
+            "productPrice": "R$ 150,90",
+            "productUrl": "/" 
+        },
+        {
+            "productImage": "https://rsv-ink-images.ink.rsvcloud.com/images/product_v2/main_image/eb16bb4ec8d38d56601f22f7caff22fa.webp",
+            "productTitle": "bermuda Detrito",
+            "productPrice": "R$ 20,90",
+            "productUrl": "/" 
+        }
+    ]
+
+}
