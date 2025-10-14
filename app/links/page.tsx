@@ -1,29 +1,29 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import {
-  ExternalLink,
-  Copy,
-  Check,
   ArrowRight,
+  Check,
+  Copy,
+  ExternalLink,
+  Shirt,
   Star,
-  Ticket,
-  Shirt
+  Ticket
 } from "lucide-react"
-import { 
+import {
     SiInstagram,
-    SiYoutube,
-    SiSpotify, 
+    SiSpotify,
     SiTiktok,
     SiX,
+    SiYoutube,
 } from '@icons-pack/react-simple-icons'
-import StarField from "@/components/star-field"
+
+import Image from "next/image"
+import Link from "next/link"
 import PixelText from "@/components/pixel-text"
+import type React from "react"
+import StarField from "@/components/star-field"
+import { useState } from "react"
 
 type LinkItem = {
   id: string
@@ -40,48 +40,26 @@ type LinkItem = {
 const links: LinkItem[] = [
 {
     id: "momento-errado",
-    title: "Momento Errado Para Estar No Escuro (Official Visualizer)",
-    subtitle: "Novo Lançamento",
+    title: "Momento Errado Para Estar No Escuro",
+    subtitle: "Ouça nosso novo single!",
     description: "",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png",
-    url: "https://www.youtube.com/watch?v=jOGH0ypnxVY",
+    url: "https://open.spotify.com/intl-pt/track/0DlgcjQKApsXB3ltrvzx6M?si=6c875883dc2149d3",
     icon: <SiYoutube className="w-6 h-6" />,
     color: "#FF0000",
     featured: true,
 },
-{
-    id: "merch",
-    title: "CAMISETAS DA DETRITO ESPACIAL",
-    subtitle: "Todo o dinheiro será investido em nosso album! apoie a cena  independente :)",
-    description: "USE O NOSSO CUPOM ''DETRITOESPACIAL'' E GANHE 5% DE DESCONTO ★",
-    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476277/camiseta_licupd.webp",
-    url: "https://www.numetalwear.com.br/numetalwear/collections/detrito-espacial?page=1",
-    icon: <Shirt className="w-6 h-6" />,
-    color: "#034c9b",
-    featured: true,
-},
-{
-    id: "ingresso-halloween",
-    title: "Ingresso para o Halloween Emozero Fest 1° EDIÇÃO",
-    subtitle: "VESTE TUA FANTASIA E VEM CURTIR COM A GENTE!",
-    description: "Dia 10 de Outubro a Detrito Espacial vai tocar no Emozero Fest! vai ser um terror",
-    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756477589/Sem_t%C3%ADtulo_m7a0e2.jpg",
-    url: "https://www.sympla.com.br/evento/libertariamente-festival-gritando-hc-em-fortaleza-ce/2980568?referrer=l.instagram.com",
-    icon: <Ticket className="w-6 h-6" />,
-    color: "#f5c207",
-    featured: true,
-},
-{
-    id: "ingresso-gritandohc",
-    title: "INGRESSO PARA O SHOW DO GRITANDO HC",
-    subtitle: "Garanta seu ingresso :)",
-    description: "Dia 15 de Novembro a Detrito Espacial vai abrir pro Gritando HC em Fortaleza, vai ser FODA!",
-    imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476623/68437928e480a-lg_vt3rni.jpg",
-    url: "https://www.sympla.com.br/evento/libertariamente-festival-gritando-hc-em-fortaleza-ce/2980568?referrer=l.instagram.com",
-    icon: <Ticket className="w-6 h-6" />,
-    color: "#f5c207",
-    featured: true,
-},
+// {
+//     id: "merch",
+//     title: "CAMISETAS DA DETRITO ESPACIAL",
+//     subtitle: "Todo o dinheiro será investido em nosso album! apoie a cena  independente :)",
+//     description: "USE O NOSSO CUPOM ''DETRITOESPACIAL'' E GANHE 5% DE DESCONTO ★",
+//     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756476277/camiseta_licupd.webp",
+//     url: "https://www.numetalwear.com.br/numetalwear/collections/detrito-espacial?page=1",
+//     icon: <Shirt className="w-6 h-6" />,
+//     color: "#034c9b",
+//     featured: true,
+// },
 {
     id: "live_session",
     title: "Live Session - Estúdio em foco",
