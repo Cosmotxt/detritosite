@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
+import { ArrowLeft, Clock, Eye, Headphones, Music2, Play } from "lucide-react"
+
 import Image from "next/image"
-import { motion } from "framer-motion"
-import { Play, Clock, Eye, ArrowLeft, Music2, Headphones } from "lucide-react"
-import StarField from "@/components/star-field"
+import Link from "next/link"
 import PixelText from "@/components/pixel-text"
+import StarField from "@/components/star-field"
+import { motion } from "framer-motion"
+import { useState } from "react"
 
 type Song = {
   id: string
@@ -67,6 +68,15 @@ const songs: Song[] = [
   {
     id: "coisas-dancantes",
     title: "coisas_dancantes.MOV",
+    album: "",
+    thumbnail: "/placeholder.svg?height=300&width=400",
+    videoUrl: "",
+    releaseDate: "Para o Futuro",
+    description: "",
+  },
+  {
+    id: "me-diga-vc",
+    title: "me diga vc",
     album: "",
     thumbnail: "/placeholder.svg?height=300&width=400",
     videoUrl: "",

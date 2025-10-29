@@ -1,13 +1,14 @@
 "use client"
 
+import { ArrowLeft, Calendar, Clock, Download, Eye, Heart, Music, Pause, Play, Share2, Volume2 } from "lucide-react"
 import { use, useState } from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { ArrowLeft, Play, Pause, Volume2, Share2, Heart, Download, Clock, Eye, Calendar, Music } from "lucide-react"
-import StarField from "@/components/star-field"
-import PixelText from "@/components/pixel-text"
-import PixelButton from "@/components/pixel-button"
+
 import Header from "@/components/header"
+import Link from "next/link"
+import PixelButton from "@/components/pixel-button"
+import PixelText from "@/components/pixel-text"
+import StarField from "@/components/star-field"
+import { motion } from "framer-motion"
 
 type Song = {
   id: string
@@ -163,7 +164,7 @@ const songsData: { [key: string]: Song } = {
     id: "entrelacamento-quantico",
     title: "Entrelaçamento Quântico",
     album: "Sangue Visceral",
-    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1753642977/entrelacamento_xnhbcl.mp4",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1761741115/entrelacamento_ge0k5w.mp4",
     spotify: "",
     description: "",
     lyrics: [
@@ -364,6 +365,54 @@ const songsData: { [key: string]: Song } = {
       "que dá vontade de dançar"
     ]
   },
+  "me-diga-vc": {
+    id: "me-diga-vc",
+    title: "me diga vc",
+    album: "",
+    videoUrl: "https://res.cloudinary.com/dw5b1yiwd/video/upload/v1761741066/me-diga-vc_vkkzcc.mp4",
+    spotify: "",
+    description: "",
+    lyrics: [
+      "E se eu fosse atropelado",
+      "um câncer apodrecendo em mim?",
+      "você me perdoaria?",
+      "",
+      "Na UFC acontecer um atentado",
+      "Ou eu levar um tiro depois de ser assaltado?",
+      "você me perdoaria?",
+      "minha vida",
+      "tem sido tão tão conturbada",
+      "E é você que me calma",
+      "É mentira",
+      "O que falaram",
+      "Que amor é como as águas",
+      "sempre secam sempre passam",
+      "",
+      "Não!",
+      "Se eu quebrasse a perna",
+      "Se eu ficasse cego",
+      "Se eu entrasse em uma briga",
+      "Se eu comesse prego",
+      "Você me perdoaria?",
+      "",
+      "Era mentira",
+      "(era mentira)",
+      "Era mentira",
+      "Era mentira",
+      "(era mentira)",
+      "Era mentira",
+      "(era mentira)",
+      "Era mentira",
+      "(e mesmo na escala de 10 anos ainda é algo meu amor)",
+      "Era mentira",
+      "(e quando você soluça de chorar é quando eu percebo)",
+      "que",
+      "Eu não sou tão confiável",
+      "Me diga você",
+      "Eu só vivo pelo instinto",
+      "de não te perder"
+    ]
+  }
 }
 
 export default function MusicPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -417,6 +466,7 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
             >
               {song.youtube ? (
                 <iframe
+                  title={`${song.title} - video`}
                   src={song.videoUrl.replace("watch?v=", "embed/")}
                   className="aspect-video w-full"
                   allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
@@ -424,6 +474,7 @@ export default function MusicPage({ params }: { params: Promise<{ slug: string }
 
               ) : (
                 <iframe
+                  title={`${song.title} - video`}
                   src={song.videoUrl}
                   className="aspect-video w-full"
                   allow="autoplay; fullscreen; encrypted-media; picture-in-picture"

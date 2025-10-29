@@ -44,9 +44,9 @@ const links: LinkItem[] = [
     subtitle: "Ouça nosso novo single!",
     description: "",
     imageUrl: "https://res.cloudinary.com/dw5b1yiwd/image/upload/v1756244976/OFICIAL_mais_leve_sbkhqx.png",
-    url: "https://open.spotify.com/intl-pt/track/0DlgcjQKApsXB3ltrvzx6M?si=6c875883dc2149d3",
-    icon: <SiYoutube className="w-6 h-6" />,
-    color: "#FF0000",
+    url: "https://open.spotify.com/intl-pt/track/0DlgcjQKApsXB3ltrvzx6M?si=70f1a37324774daa",
+    icon: <SiSpotify className="w-6 h-6" />,
+    color: "#1DB954",
     featured: true,
 },
 // {
