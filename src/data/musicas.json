@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "index": "01",
+        "title": "Letargia",
+        "duration": "3:24",
+        "year": "2024",
+        "album": "sangue visceral",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/500x500/c65a62a4705f4cb1a46d0fb67df18a0e.jpg",
+        "featured": true
+    },
+    {
+        "id": 2,
+        "index": "02",
+        "title": "me diga vc",
+        "duration": "2:58",
+        "year": "2024",
+        "album": "sangue visceral",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/500x500/df57b4478bc646232cb251037fc676b7.jpg",
+        "featured": false
+    },
+    {
+        "id": 3,
+        "index": "03",
+        "title": "coisas-dancantes.MOV",
+        "duration": "4:12",
+        "year": "2025",
+        "album": "sangue visceral",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/500x500/244d641bc8194068b24f85104c936425.jpg",
+        "featured": false
+    },
+    {
+        "id": 4,
+        "index": "04",
+        "title": "entrelaçamento quântico",
+        "duration": "3:47",
+        "year": "2025",
+        "album": "sangue visceral",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/500x500/81ebcc6214a00da97eb8a06b6b00a8c7.jpg",
+        "featured": false
+    },
+    {
+        "id": 5,
+        "index": "05",
+        "title": "não entendi",
+        "duration": "2:33",
+        "year": "2025",
+        "album": "sangue visceral",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/c19249d4075c4ab0abaab4e8e8271bc7.jpg",
+        "featured": false
+    },
+    {
+        "id": 6,
+        "index": "06",
+        "title": "eco de mim",
+        "duration": "3:15",
+        "year": "2026",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/557643a8faaa35768cb6088f576fed30.jpg",
+        "featured": false
+    },
+    {
+        "id": 7,
+        "index": "07",
+        "title": "poeira estelar",
+        "duration": "4:01",
+        "year": "2026",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/500x500/243f8d6a25b4724cfc04093d76b73e32.jpg",
+        "featured": false
+    },
+    {
+        "id": 8,
+        "index": "08",
+        "title": "fragmentos",
+        "duration": "3:38",
+        "year": "2024",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/6135867e20b01c34948b92428a5a93ea.jpg",
+        "featured": false
+    },
+    {
+        "id": 9,
+        "index": "09",
+        "title": "luz distante",
+        "duration": "2:47",
+        "year": "2026",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/a90e3cf226c272ba6cc53a8df90f05e4.jpg",
+        "featured": false
+    },
+    {
+        "id": 10,
+        "index": "10",
+        "title": "gravidade zero",
+        "duration": "3:52",
+        "year": "2024",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/b2cbc051d3bd4a5eca471774e57fdd8d.jpg",
+        "featured": false
+    },
+    {
+        "id": 11,
+        "index": "11",
+        "title": "aurora negra",
+        "duration": "4:28",
+        "year": "2025",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/0ecccb7df6cd12f093522e1e01043293.jpg",
+        "featured": false
+    },
+    {
+        "id": 12,
+        "index": "12",
+        "title": "limbo",
+        "duration": "3:09",
+        "year": "2026",
+        "album": "vazio preenchido",
+        "cover": "https://lastfm.freetls.fastly.net/i/u/300x300/3cd5bda9db4b49d188a324a2cd87c217.jpg",
+        "featured": false
+    }
+]

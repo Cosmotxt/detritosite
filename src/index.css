@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'kingjola';
+    src: url('/fonts/kingjola.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'uglyqua';
+    src: url('/fonts/uglyqua.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root {
+    --headline-font: 'kingjola', sans-serif;
+    --uglyqua-font: 'uglyqua', sans-serif;
+
+    --extragiant-text: 18rem;
+    --giant-text: 10rem;
+    --headline-text: 3rem;
+    --body-text: 1.4rem;
+    --sm-text: 1rem;
+    --xs-text: 0.7rem;
+
+
+    --dark-color: #171017;
+    --green-color: #655513;
+    --red-color: #8D312A;
+    --white-color: #CCCCCC;
+}
+
+.body {
+    background-color: #655513;
+}
+
+.font-uglyqua {
+    font-family: var(--uglyqua-font);
+}
+
+.extragiant-text {
+    font-family: var(--headline-font);
+    font-size: var(--extragiant-text);
+    color: var(--white-color);
+}
+
+.giant-text {
+    font-family: var(--headline-font);
+    font-size: var(--giant-text);
+    color: var(--white-color);
+}
+
+.body-text {
+    font-family: var(--uglyqua-font);
+    font-size: var(--body-text);
+    color: var(--white-color);
+}
+
+.h2-text {
+    font-family: var(--uglyqua-font);
+    font-size: var(--headline-text);
+    color: var(--white-color);
+}
+
+.headline-text {
+    font-family: var(--headline-font);
+    font-size: var(--headline-text);
+    color: var(--white-color);
+}
+
+.sm-text {
+    font-family: var(--uglyqua-font);
+    font-size: var(--sm-text);
+    color: var(--white-color);
+}
+
+.xs-text {
+    font-family: var(--uglyqua-font);
+    font-size: var(--xs-text);
+    color: var(--white-color);
+}
+
+
+::selection {
+    background: var(--green-color);
+    color: var(--white-color);
+}
+
+/* Custom scrollbar: thin and elegant */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--red-color);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--white-color);
+}
+
+/* Utilitário para ocultar barra de rolagem */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Rumble overlay — grão analógico animado (cintila/vibra) */
+.rumble-overlay {
+    position: fixed;
+    left: -100px;
+    top: -100px;
+    width: calc(100% + 200px);
+    height: calc(100% + 200px);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Cfilter id='nf'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='110' height='110' filter='url(%23nf)' opacity='1'/%3E%3C/svg%3E") repeat center center/110px 110px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.30;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi) {
+    .rumble-overlay {
+        background-size: 55px 55px;
+        opacity: 0.25;
+    }
+}

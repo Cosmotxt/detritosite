@@ -1,0 +1,88 @@
+- generic [ref=e7]:
+  - heading "Unreleased" [level=1] [ref=e8]
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - img [ref=e12]
+        - img [ref=e13]
+      - img [ref=e14] [cursor=pointer]
+      - img [ref=e16] [cursor=pointer]
+      - generic [ref=e18]: 1/12
+    - generic [ref=e19]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic: sangue visceral
+          - heading "Letargia" [level=2] [ref=e25]
+        - generic [ref=e26]:
+          - button "OUVIR" [ref=e27] [cursor=pointer]:
+            - img [ref=e29]
+            - generic [ref=e31]: OUVIR
+          - list [ref=e32]:
+            - listitem [ref=e33]:
+              - img [ref=e34]
+              - text: "2024"
+            - listitem [ref=e36]:
+              - img [ref=e37]
+              - text: 3:24
+      - list [ref=e39]:
+        - listitem [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]:
+            - img [ref=e43]
+            - text: Letargia
+          - generic [ref=e45]: sangue visceral
+        - listitem [ref=e46] [cursor=pointer]:
+          - generic [ref=e47]:
+            - img [ref=e49]
+            - text: me diga vc
+          - generic [ref=e51]: sangue visceral
+        - listitem [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]:
+            - img [ref=e55]
+            - text: coisas-dancantes.MOV
+          - generic [ref=e57]: sangue visceral
+        - listitem [ref=e58] [cursor=pointer]:
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - text: entrelaçamento quântico
+          - generic [ref=e63]: sangue visceral
+        - listitem [ref=e64] [cursor=pointer]:
+          - generic [ref=e65]:
+            - img [ref=e67]
+            - text: não entendi
+          - generic [ref=e69]: sangue visceral
+        - listitem [ref=e70] [cursor=pointer]:
+          - generic [ref=e71]:
+            - img [ref=e73]
+            - text: eco de mim
+          - generic [ref=e75]: vazio preenchido
+        - listitem [ref=e76] [cursor=pointer]:
+          - generic [ref=e77]:
+            - img [ref=e79]
+            - text: poeira estelar
+          - generic [ref=e81]: vazio preenchido
+        - listitem [ref=e82] [cursor=pointer]:
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - text: fragmentos
+          - generic [ref=e87]: vazio preenchido
+        - listitem [ref=e88] [cursor=pointer]:
+          - generic [ref=e89]:
+            - img [ref=e91]
+            - text: luz distante
+          - generic [ref=e93]: vazio preenchido
+        - listitem [ref=e94] [cursor=pointer]:
+          - generic [ref=e95]:
+            - img [ref=e97]
+            - text: gravidade zero
+          - generic [ref=e99]: vazio preenchido
+        - listitem [ref=e100] [cursor=pointer]:
+          - generic [ref=e101]:
+            - img [ref=e103]
+            - text: aurora negra
+          - generic [ref=e105]: vazio preenchido
+        - listitem [ref=e106] [cursor=pointer]:
+          - generic [ref=e107]:
+            - img [ref=e109]
+            - text: limbo
+          - generic [ref=e111]: vazio preenchido
