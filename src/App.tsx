@@ -19,6 +19,14 @@ ScrollSmoother.create({
   effects: true,
 })
 
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'complete') {
+    ScrollTrigger.refresh()
+  } else {
+    window.addEventListener('load', () => ScrollTrigger.refresh())
+  }
+}
+
 function App() {
   const rumbleRef = useRumble()
 

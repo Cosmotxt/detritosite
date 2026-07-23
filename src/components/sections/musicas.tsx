@@ -1,9 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
-import Lenis from 'lenis';
 import musicasData from '../../data/musicas.json';
 import { Badge } from '../ui/Badge';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import unreleasedImage from '../../assets/media/desktop/UNRELEASED.png'
+import unreleasedImage from '../../assets/media/desktop/UNRELEASED.webp'
 import { Button } from '../ui/Button';
 import Star from '../../assets/icons/star.svg?react'
 import { useGSAP } from '@gsap/react';
@@ -25,39 +24,43 @@ const TOTAL_MUSICAS = musicasData.length;
 const Musicas = () => {
     const [currentSong, setCurrentSong] = useState<Musica | null>(musicasData[0]);
     const songsListRef = useRef<HTMLUListElement>(null);
-    const lenisRef = useRef<Lenis | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const coverRef = useRef<HTMLImageElement>(null);
     const nextCoverRef = useRef<HTMLImageElement>(null);
     const [direction, setDirection] = useState<'left' | 'right'>('right');
     const prevCoverUrlRef = useRef<string | undefined>(currentSong?.cover);
     const isAnimatingRef = useRef(false);
-    
+
     useGSAP(() => {
       if (!coverRef.current || !nextCoverRef.current || !currentSong) return;
+
+      const coverEl = coverRef.current;
+      const nextCoverEl = nextCoverRef.current;
+      const songCover = currentSong.cover!;
+      const prevCover = prevCoverUrlRef.current || songCover;
 
       const tl = gsap.timeline({
         paused: true,
         onStart: () => {
           isAnimatingRef.current = true;
-          coverRef.current!.src = prevCoverUrlRef.current || currentSong.cover!
-          nextCoverRef.current!.src = currentSong.cover!
+          coverEl.src = prevCover;
+          nextCoverEl.src = songCover;
         },
         onComplete: () => {
           isAnimatingRef.current = false;
-          coverRef.current!.src = currentSong.cover!
-          gsap.set([coverRef.current, nextCoverRef.current], { xPercent: 0 })
+          coverEl.src = songCover;
+          gsap.set([coverEl, nextCoverEl], { xPercent: 0 });
         }
       })
 
       if (direction === 'right') {
-        gsap.set(nextCoverRef.current, { xPercent: 100 })
-        tl.to(coverRef.current, { xPercent: -100, ease: 'power3.inOut', duration: 0.35 }, 0)
-          .to(nextCoverRef.current, { xPercent: 0, ease: 'power3.inOut', duration: 0.35 }, 0)
+        gsap.set(nextCoverEl, { xPercent: 100 })
+        tl.to(coverEl, { xPercent: -100, ease: 'power3.inOut', duration: 0.35 }, 0)
+          .to(nextCoverEl, { xPercent: 0, ease: 'power3.inOut', duration: 0.35 }, 0)
       } else {
-        gsap.set(nextCoverRef.current, { xPercent: -100 })
-        tl.to(coverRef.current, { xPercent: 100, ease: 'power3.inOut', duration: 0.35 }, 0)
-          .to(nextCoverRef.current, { xPercent: 0, ease: 'power3.inOut', duration: 0.35 }, 0)
+        gsap.set(nextCoverEl, { xPercent: -100 })
+        tl.to(coverEl, { xPercent: 100, ease: 'power3.inOut', duration: 0.35 }, 0)
+          .to(nextCoverEl, { xPercent: 0, ease: 'power3.inOut', duration: 0.35 }, 0)
       }
 
       tl.restart()
@@ -70,34 +73,6 @@ const Musicas = () => {
     }, { scope: containerRef })
 
     useEffect(() => {
-      if (!songsListRef.current) return;
-
-      const lenis = new Lenis({
-        wrapper: songsListRef.current,
-        content: songsListRef.current,
-        lerp: 0.08,
-        duration: 1.2,
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-      });
-
-      lenisRef.current = lenis;
-
-      let rafId: number;
-      function raf(time: number) {
-        lenis.raf(time);
-        rafId = requestAnimationFrame(raf);
-      }
-      rafId = requestAnimationFrame(raf);
-
-      return () => {
-        cancelAnimationFrame(rafId);
-        lenis.destroy();
-        lenisRef.current = null;
-      };
-    }, []);
-
-    useEffect(() => {
       if (!songsListRef.current || !currentSong) return;
 
       const item = songsListRef.current.querySelector(
@@ -105,11 +80,7 @@ const Musicas = () => {
       ) as HTMLElement | null;
       if (!item) return;
 
-      if (lenisRef.current) {
-        lenisRef.current.scrollTo(item, { duration: 0.8 });
-      } else {
-        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, [currentSong]);
 
     const nextSong = () => {
@@ -144,13 +115,13 @@ const Musicas = () => {
       {/* BLACK OVERLAY */}
       <div className="bg-black/80 absolute inset-0 z-0"></div>
 
-      <div className="col-start-2 col-span-10 flex flex-col items-items justify-center h-full gap-10 z-10">
-        <h1 className='w-full text-left giant-text leading-none -mt-20'>Unreleased</h1>
+      <div className="col-start-1 col-span-4 lg:col-start-2 lg:col-span-10 flex flex-col justify-center h-full gap-15 lg:gap-10 z-10">
+        <h1 className='w-full text-center lg:text-left giant-text leading-none'>Unreleased</h1>
         
-        <div className="flex gap-x-40 items-center justify-between h-[60vh]">
+        <div className="flex flex-col lg:flex-row gap-x-40 items-center justify-center h-[60vh] lg:h-[60vh] origin-center">
           {/* CAPA & NAVEGAÇÃO */}
           <div className="relative aspect-square h-full">
-            <div className="relative overflow-hidden h-full bg-(--red-color)" style={{ willChange: 'transform' }}>
+            <div className="relative overflow-hidden h-full bg-(--red-color) will-change-transform select-none">
                 <img 
                   ref={coverRef}
                   className='absolute top-0 left-0 object-cover object-center h-full w-full'
@@ -161,26 +132,26 @@ const Musicas = () => {
                 />
             </div>
 
-            <FaArrowLeft onClick={prevSong} className='absolute -translate-y-1/2 translate-x-[-200%] top-1/2 left-0 body-text cursor-pointer' />
-            <FaArrowRight onClick={nextSong} className='absolute -translate-y-1/2 translate-x-[200%] top-1/2 right-0 body-text cursor-pointer' />
+            <FaArrowLeft onClick={prevSong} className='absolute -translate-y-1/2 translate-x-[-150%] lg:translate-x-[-200%] top-1/2 left-0 body-text cursor-pointer' />
+            <FaArrowRight onClick={nextSong} className='absolute -translate-y-1/2 translate-x-[150%] lg:translate-x-[200%] top-1/2 right-0 body-text cursor-pointer' />
 
-            <div className="body-text absolute bottom-0 left-1/2 translate-y-[150%] -translate-x-1/2">{`${currentSong?.id}/${TOTAL_MUSICAS}`}</div>
+            <div className="body-text absolute bottom-4 lg:bottom-0 left-1/2 translate-y-[150%] -translate-x-1/2 select-none">{`${currentSong?.id}/${TOTAL_MUSICAS}`}</div>
           </div>
 
           {/* INFORMAÇÕES & CTA */}
-          <div className="flex flex-col gap-10 h-full w-full">
+          <div className="flex flex-col gap-10 h-full w-[85%] lg:w-full mt-14">
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 mx-auto lg:mx-0">
               <div>
                 <Badge>{currentSong?.album}</Badge>
-                <h2 className='h2-text leading-none mt-2'>{currentSong?.title}</h2>
+                <h2 className='h2-text w-full leading-none mt-2 text-center lg:text-left'>{currentSong?.title}</h2>
               </div>
 
-              <div className="flex gap-x-3">
+              <div className="flex gap-x-3 mx-auto lg:mx-0">
                 <Button icon={<FaArrowLeft className="rotate-135" />}>
                   OUVIR
                 </Button>
-                <ul className='flex flex-col justify-center items-start opacity-50'>
+                <ul className='hidden lg:flex flex-col justify-center items-start opacity-50'>
                   <li className='sm-text flex items-center gap-1'><Star className='size-(--sm-text)' />{currentSong?.year}</li>
                   <li className='sm-text flex items-center gap-1'><Star className='size-(--sm-text)' />{currentSong?.duration}</li>
                 </ul>
@@ -188,7 +159,7 @@ const Musicas = () => {
             </div>
 
 
-            <ul ref={songsListRef} className="hidden flex-1 min-h-0 overflow-y-auto no-scrollbar lg:flex flex-col">
+            <ul ref={songsListRef} className="hidden lg:flex flex-col flex-1 overflow-y-auto no-scrollbar">
               {musicasData.map((music, key) => (
                 <li 
                   key={key} 

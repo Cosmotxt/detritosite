@@ -67,16 +67,21 @@ const Members = () => {
         mm.add({
             isDesktop: '(min-width: 1024px)',
             isMobile: '(max-width: 1023px)',
-        }, () => {
+        }, (ctx) => {
+            const { isDesktop } = ctx.conditions || {};
             const containerElements = gsap.utils.toArray(container.current!.children) as HTMLElement[];
 
             if (containerElements.length === 0) return;
+
+            const endDistance = isDesktop
+                ? membersData.length * 100
+                : membersData.length * 80;
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: container.current,
                     start: 'top top',
-                    end: `+=${membersData.length * 100}%`,
+                    end: `+=${endDistance}%`,
                     pin: true,
                     scrub: 2,
                 }
@@ -98,7 +103,7 @@ const Members = () => {
     }, { scope: container, dependencies: [membersData], revertOnUpdate: true });
 
     return (
-        <div ref={container} id="members" className="relative h-screen overflow-hidden">
+        <div ref={container} id="members" className="relative h-screen overflow-hidden bg-(--dark-color)">
             {membersData.map((member, key) => (
                 <div
                     className="absolute h-full w-full top-0 left-0 grid grid-cols-4 lg:grid-cols-12"

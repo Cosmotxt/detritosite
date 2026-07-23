@@ -1,6 +1,7 @@
 import lancamentoImgDesktop from '../../assets/media/desktop/LANCAMENTO.webp'
 // import lancamentoImgMobile from '../../assets/media/mobile/LANCAMENTO.webp'
-    import capaSangueVisceral from '../../assets/media/desktop/COVERS/capa-sangue-visceral.webp'
+import capaSangueVisceral from '../../assets/media/desktop/COVERS/capa-sangue-visceral.webp'
+import ArrowDeg from '../../assets/icons/arrowDeg.svg?react'
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
 import gsap from 'gsap';
@@ -10,6 +11,7 @@ gsap.registerPlugin(scrollTrigger);
 const Lancamento = () => {
     const sangueVisceralRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const ctaRef = useRef<HTMLParagraphElement | null>(null)
 
     useGSAP(() => {
         if (!sangueVisceralRef.current) return;
@@ -26,9 +28,9 @@ const Lancamento = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 30%',
-                    end: '20% top',
-                    toggleActions: 'play none play reverse',
+                    start: '20% bottom',
+                    markers: true,
+                    toggleActions: 'play none play none',
                 }
             });
 
@@ -61,6 +63,10 @@ const Lancamento = () => {
                         duration: 1,
                         ease: 'power3.inOut',
                     }, '<'
+                ).from(ctaRef.current, 
+                    {
+                        autoAlpha: 0,
+                    }, '-=.5'
                 )
             } else if (isMobile) {
                 tl.fromTo(sangueVisceralElements[0],
@@ -89,13 +95,23 @@ const Lancamento = () => {
     return (
         <section ref={containerRef} id="lancamento" className="relative h-screen bg-cover bg-center z-20" style={{ backgroundImage: `url(${lancamentoImgDesktop})` }}>
             <div className="relative grid grid-cols-4 lg:grid-cols-12 justify-center items-center h-full w-full">
-                <img 
-                    src={capaSangueVisceral} 
-                    alt="Capa - Sangue Visceral"
-                    className="col-start-2 lg:col-start-6 col-span-2 border border-(--white-color)/60" 
-                />
+                <div className="group flex flex-col gap-1 col-start-2 lg:col-start-6 col-span-2 cursor-pointer">
+                    <p ref={ctaRef} className='w-full body-text text-right'>
+                        <span 
+                            className='group-hover:tracking-[8px] transition-all duration-500 origin-right'
+                        >
+                            quero ouvir
+                        </span>
+                        <ArrowDeg className='inline ml-1 transform rotate-35 group-hover:rotate-45 group-hover:scale-120 transition-transform duration-500' />
+                    </p>
+                    <img 
+                        src={capaSangueVisceral} 
+                        alt="Capa - Sangue Visceral"
+                        className="border border-(--white-color)/60" 
+                    />
+                </div>
 
-                <div ref={sangueVisceralRef} className="absolute flex flex-col lg:flex-row justify-center w-full h-full items-center leading-0 giant-text pb-[7vh]">
+                <div ref={sangueVisceralRef} className="pointer-events-none absolute flex flex-col lg:flex-row justify-center w-full h-full items-center leading-0 giant-text pb-[7vh]">
                     <span className="">Sangue</span>
                     <span className="">visceral</span>
                 </div>

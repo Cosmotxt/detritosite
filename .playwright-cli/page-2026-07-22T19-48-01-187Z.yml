@@ -1,0 +1,208 @@
+- generic [ref=e2]:
+  - generic: scroller-end
+  - generic: scroller-start
+  - generic [ref=e3]:
+    - generic: end
+    - generic: start
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e10]: Fazemos isso pelas memórias
+        - generic [ref=e13]:
+          - generic [ref=e14] [cursor=pointer]:
+            - text: quero ouvir
+            - img "Capa - Sangue Visceral" [ref=e15]
+          - generic:
+            - generic: Sangue
+            - generic: visceral
+      - generic [ref=e17]:
+        - generic [ref=e19]: Ind
+        - generic [ref=e21]: Reni
+        - generic [ref=e23]: Vince
+        - generic [ref=e25]: Gabs
+        - generic [ref=e27]: Tilas
+      - generic [ref=e30]:
+        - heading "Unreleased" [level=1] [ref=e31]
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - img [ref=e35]
+              - img [ref=e36]
+            - img [ref=e37] [cursor=pointer]
+            - img [ref=e39] [cursor=pointer]
+            - generic [ref=e41]: 1/12
+          - generic [ref=e42]:
+            - generic [ref=e43]:
+              - generic [ref=e44]:
+                - generic [ref=e45]:
+                  - generic: sangue visceral
+                - heading "Letargia" [level=2] [ref=e47]
+              - generic [ref=e48]:
+                - button "OUVIR" [ref=e49] [cursor=pointer]:
+                  - img [ref=e51]
+                  - generic [ref=e53]: OUVIR
+                - list [ref=e54]:
+                  - listitem [ref=e55]:
+                    - img [ref=e56]
+                    - text: "2024"
+                  - listitem [ref=e58]:
+                    - img [ref=e59]
+                    - text: 3:24
+            - list [ref=e61]:
+              - listitem [ref=e62] [cursor=pointer]:
+                - generic [ref=e63]:
+                  - img [ref=e65]
+                  - text: Letargia
+                - generic [ref=e67]: sangue visceral
+              - listitem [ref=e68] [cursor=pointer]:
+                - generic [ref=e69]:
+                  - img [ref=e71]
+                  - text: me diga vc
+                - generic [ref=e73]: sangue visceral
+              - listitem [ref=e74] [cursor=pointer]:
+                - generic [ref=e75]:
+                  - img [ref=e77]
+                  - text: coisas-dancantes.MOV
+                - generic [ref=e79]: sangue visceral
+              - listitem [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]:
+                  - img [ref=e83]
+                  - text: entrelaçamento quântico
+                - generic [ref=e85]: sangue visceral
+              - listitem [ref=e86] [cursor=pointer]:
+                - generic [ref=e87]:
+                  - img [ref=e89]
+                  - text: não entendi
+                - generic [ref=e91]: sangue visceral
+              - listitem [ref=e92] [cursor=pointer]:
+                - generic [ref=e93]:
+                  - img [ref=e95]
+                  - text: eco de mim
+                - generic [ref=e97]: vazio preenchido
+              - listitem [ref=e98] [cursor=pointer]:
+                - generic [ref=e99]:
+                  - img [ref=e101]
+                  - text: poeira estelar
+                - generic [ref=e103]: vazio preenchido
+              - listitem [ref=e104] [cursor=pointer]:
+                - generic [ref=e105]:
+                  - img [ref=e107]
+                  - text: fragmentos
+                - generic [ref=e109]: vazio preenchido
+              - listitem [ref=e110] [cursor=pointer]:
+                - generic [ref=e111]:
+                  - img [ref=e113]
+                  - text: luz distante
+                - generic [ref=e115]: vazio preenchido
+              - listitem [ref=e116] [cursor=pointer]:
+                - generic [ref=e117]:
+                  - img [ref=e119]
+                  - text: gravidade zero
+                - generic [ref=e121]: vazio preenchido
+              - listitem [ref=e122] [cursor=pointer]:
+                - generic [ref=e123]:
+                  - img [ref=e125]
+                  - text: aurora negra
+                - generic [ref=e127]: vazio preenchido
+              - listitem [ref=e128] [cursor=pointer]:
+                - generic [ref=e129]:
+                  - img [ref=e131]
+                  - text: limbo
+                - generic [ref=e133]: vazio preenchido
+      - generic [ref=e134]:
+        - generic [ref=e137]:
+          - generic [ref=e138] [cursor=pointer]:
+            - generic [ref=e139]:
+              - generic [ref=e140]: Alterna Fest
+              - img [ref=e142]
+            - generic [ref=e144]: 18/07/2023
+            - generic [ref=e145]: 18:00
+            - generic [ref=e146]: Fortaleza, CE
+          - generic [ref=e147] [cursor=pointer]:
+            - generic [ref=e148]:
+              - generic [ref=e149]: Farol do Rock
+              - img [ref=e151]
+            - generic [ref=e153]: 18/07/2023
+            - generic [ref=e154]: 21:00
+            - generic [ref=e155]: Paracuru, CE
+          - generic [ref=e156] [cursor=pointer]:
+            - generic [ref=e157]:
+              - generic [ref=e158]: Made in CE Sessions
+              - img [ref=e160]
+            - generic [ref=e162]: 18/07/2026
+            - generic [ref=e163]: 19:00
+            - generic [ref=e164]: Fortaleza, CE
+        - contentinfo [ref=e165]:
+          - generic [ref=e166]:
+            - img [ref=e167]
+            - list [ref=e170]:
+              - listitem [ref=e171] [cursor=pointer]:
+                - generic [ref=e172]:
+                  - img [ref=e173]
+                  - generic "instagram" [ref=e175]:
+                    - generic [ref=e176]: i
+                    - generic [ref=e177]: "n"
+                    - generic [ref=e178]: s
+                    - generic [ref=e179]: t
+                    - generic [ref=e180]: a
+                    - generic [ref=e181]: g
+                    - generic [ref=e182]: r
+                    - generic [ref=e183]: a
+                    - generic [ref=e184]: m
+              - listitem [ref=e185] [cursor=pointer]:
+                - generic [ref=e186]:
+                  - img [ref=e187]
+                  - generic "spotify" [ref=e189]:
+                    - generic [ref=e190]: s
+                    - generic [ref=e191]: p
+                    - generic [ref=e192]: o
+                    - generic [ref=e193]: t
+                    - generic [ref=e194]: i
+                    - generic [ref=e195]: f
+                    - generic [ref=e196]: "y"
+              - listitem [ref=e197] [cursor=pointer]:
+                - generic [ref=e198]:
+                  - img [ref=e199]
+                  - generic "tiktok" [ref=e201]:
+                    - generic [ref=e202]: t
+                    - generic [ref=e203]: i
+                    - generic [ref=e204]: k
+                    - generic [ref=e205]: t
+                    - generic [ref=e206]: o
+                    - generic [ref=e207]: k
+              - listitem [ref=e208] [cursor=pointer]:
+                - generic [ref=e209]:
+                  - img [ref=e210]
+                  - generic "detritoe@gmail.com" [ref=e212]:
+                    - generic [ref=e213]: d
+                    - generic [ref=e214]: e
+                    - generic [ref=e215]: t
+                    - generic [ref=e216]: r
+                    - generic [ref=e217]: i
+                    - generic [ref=e218]: t
+                    - generic [ref=e219]: o
+                    - generic [ref=e220]: e
+                    - generic [ref=e221]: "@"
+                    - generic [ref=e222]: g
+                    - generic [ref=e223]: m
+                    - generic [ref=e224]: a
+                    - generic [ref=e225]: i
+                    - generic [ref=e226]: l
+                    - generic [ref=e227]: .
+                    - generic [ref=e228]: c
+                    - generic [ref=e229]: o
+                    - generic [ref=e230]: m
+              - listitem [ref=e231] [cursor=pointer]:
+                - img [ref=e232]
+                - generic [ref=e234]: cuscuz records
+              - listitem [ref=e235] [cursor=pointer]:
+                - img [ref=e236]
+                - generic [ref=e238]: nossa música
+              - listitem [ref=e239] [cursor=pointer]:
+                - img [ref=e240]
+                - generic [ref=e242]: próximos shows
+              - listitem [ref=e243] [cursor=pointer]:
+                - img [ref=e244]
+                - generic [ref=e246]: links relevantes
+            - generic [ref=e247]:
+              - paragraph [ref=e248]: © 2026 Detrito Espacial. Todos os direitos reservados.
+              - paragraph [ref=e249]: © Desenvolvidor por Elementare Studio
