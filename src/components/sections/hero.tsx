@@ -14,10 +14,12 @@ const Hero = () => {
         if (!containerRef.current) return;
         const mm = gsap.matchMedia();
     
-        mm.add({ isDesktop: '(min-width: 1023px)' }, () => {
-            
+        mm.add({ 
+            isDesktop: '(min-width: 1024px)', 
+            isMobile: '(max-width: 1023px)'
+        }, () => {
             const phrases = gsap.utils.toArray(phrasesRef.current!.children) as HTMLDivElement[] | [];
-
+            
             gsap.fromTo(phrases, 
                 {
                     filter: 'blur(10px)',
@@ -28,7 +30,7 @@ const Hero = () => {
                     autoAlpha: 1,
                     ease: 'power3.inOut',
                     duration: 1.1,
-                    stagger: .7
+                    stagger: .2
                 }
             )
 
@@ -44,10 +46,10 @@ const Hero = () => {
 
     return (
         <section ref={containerRef} id="hero" className="relative h-screen bg-cover bg-center z-10" style={{ backgroundImage: `url(${heroImg})` }}>
-            <div ref={phrasesRef} className="absolute inset-0 h-full w-full grid grid-cols-4 lg:grid-cols-12 px-6 body-text z-20 grid-rows-6">
+            <div ref={phrasesRef} className="absolute inset-0 h-full w-full grid grid-cols-4 lg:grid-cols-12 px-6 text-(length:--sm-text) lg:text-(length:--body-text) font-uglyqua text-(--white-color) z-20 grid-rows-6">
                 <p className='col-start-1 lg:col-start-3 col-span-5 row-start-3'>Fazemos isso pelas memórias</p>
-                <p className='col-start-2 lg:col-start-6 col-span-5 row-start-4 lg:row-start-6'>Até agora tem valido a pena.</p>
-                <p className='col-start-3 lg:col-start-10 col-span-3 lg:col-span-2 row-start-5 lg:row-start-2'>Isso não vai mudar </p>
+                <p className='hidden lg:block lg:col-start-6 col-span-5 row-start-2 lg:row-start-6'>Até agora tem valido a pena.</p>
+                <p className='col-start-3 text-right lg:text-left lg:col-start-10 col-span-3 lg:col-span-2 row-start-5 lg:row-start-2'>Isso não vai mudar </p>
             </div>
 
             <div className="h-full w-full absolute inset-0 bg-black/40 z-0"></div>

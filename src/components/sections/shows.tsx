@@ -1,13 +1,10 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import ArrowDeg from '../../assets/icons/arrowDeg.svg?react'
 import Star from '../../assets/icons/star.svg?react'
 import shows from '../../data/shows.json'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const Shows = () => {
     const containerRef = useRef<HTMLDivElement | null>(null)
@@ -17,18 +14,83 @@ const Shows = () => {
     const desktopRowsRef = useRef<HTMLDivElement | null>(null)
     const flyerRef = useRef<HTMLDivElement | null>(null)
     const flyerImgRef = useRef<HTMLImageElement | null>(null)
-    const xToRef = useRef<((v: number) => void) | null>(null)
-    const yToRef = useRef<((v: number) => void) | null>(null)
     const isVisibleRef = useRef(false)
 
-    useEffect(() => {
-        if (!flyerRef.current) return
-        gsap.set(flyerRef.current, { scale: 0, autoAlpha: 0, rotation: -6 })
-    }, [])
-
-    useGSAP(() => {
+    useGSAP((_context, contextSafe) => {
         if (!containerRef.current || !titleRef.current) return
         if (!desktopRowsRef.current && !mobileRowsRef.current) return
+        if (!flyerRef.current) return
+
+        const safe = contextSafe!
+
+        gsap.set(flyerRef.current, { scale: 0, autoAlpha: 0, rotation: -6 })
+
+        const xTo = gsap.quickTo(flyerRef.current, 'x', { duration: 0.45, ease: 'power3' })
+        const yTo = gsap.quickTo(flyerRef.current, 'y', { duration: 0.45, ease: 'power3' })
+
+        const onEnter = safe((index: number) => {
+            if (!flyerRef.current || !flyerImgRef.current) return
+
+            const show = shows[index]
+            if (!show.flyer) return
+
+            flyerImgRef.current.src = show.flyer
+
+            gsap.set(flyerRef.current, { rotation: -6 })
+
+            gsap.to(flyerRef.current, {
+                scale: 1,
+                autoAlpha: 1,
+                rotation: 0,
+                duration: 0.5,
+                ease: 'back.out(1.7)',
+                overwrite: 'auto',
+            })
+
+            isVisibleRef.current = true
+        })
+
+        const onMove = safe((e: MouseEvent) => {
+            if (!isVisibleRef.current) return
+            xTo(e.clientX - 60)
+            yTo(e.clientY - 180)
+        })
+
+        const onLeave = safe(() => {
+            if (!flyerRef.current || !isVisibleRef.current) return
+
+            isVisibleRef.current = false
+
+            gsap.to(flyerRef.current, {
+                scale: 0.6,
+                autoAlpha: 0,
+                rotation: 6,
+                duration: 0.35,
+                ease: 'power2.in',
+                overwrite: 'auto',
+            })
+        })
+
+        const cleanups: Array<() => void> = []
+
+        const bindRow = (row: HTMLElement, index: number) => {
+            const enterHandler = () => onEnter(index)
+            row.addEventListener('mouseenter', enterHandler)
+            row.addEventListener('mousemove', onMove)
+            row.addEventListener('mouseleave', onLeave)
+            cleanups.push(() => {
+                row.removeEventListener('mouseenter', enterHandler)
+                row.removeEventListener('mousemove', onMove)
+                row.removeEventListener('mouseleave', onLeave)
+            })
+        }
+
+        gsap.set(titleRef.current, { filter: 'blur(10px)', autoAlpha: 0 })
+        const allRows = [
+            ...gsap.utils.toArray(mobileRowsRef.current?.children ?? []) as HTMLElement[],
+            ...gsap.utils.toArray(desktopRowsRef.current?.children ?? []) as HTMLElement[],
+        ]
+        gsap.set(allRows, { filter: 'blur(6px)', autoAlpha: 0, yPercent: 15 })
 
         const mm = gsap.matchMedia()
 
@@ -36,33 +98,32 @@ const Shows = () => {
             isDesktop: '(min-width: 1024px)',
             isMobile: '(max-width: 1023px)',
         }, (ctx) => {
-            const { isDesktop } = ctx.conditions!
+            const { isDesktop, isMobile } = ctx.conditions!
             const rowsContainer = isDesktop ? desktopRowsRef.current : mobileRowsRef.current
             if (!rowsContainer) return
+
+            const rows = gsap.utils.toArray(rowsContainer.children) as HTMLElement[]
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top 80%',
                     end: 'top 30%',
-                    toggleActions: 'play none play reverse',
+                    toggleActions: 'play none play none',
                 }
             })
 
-            tl.fromTo(titleRef.current,
-                { filter: 'blur(10px)', autoAlpha: 0 },
-                { filter: 'blur(0px)', autoAlpha: 1, duration: 0.8, ease: 'power3.inOut' }
-            )
-
-            const rows = gsap.utils.toArray(rowsContainer.children) as HTMLElement[]
-            tl.fromTo(rows,
-                { filter: 'blur(6px)', autoAlpha: 0, yPercent: 15 },
+            tl.to(titleRef.current,
+                { filter: 'blur(0px)', autoAlpha: 1, duration: 0.5, ease: 'power3.inOut' }
+            ).to(rows,
                 { filter: 'blur(0px)', autoAlpha: 1, yPercent: 0, duration: 0.6, ease: 'power3.inOut', stagger: 0.12 },
-                '-=0.2'
+                '-=0.5'
             )
 
-            if (isDesktop) {
-                console.log('oi kkkk')
+            rows.forEach((row, index) => bindRow(row, index))
+
+            if (isDesktop || isMobile) {
+                console.log('mobile shows ok!')
                 gsap.to(contentRef.current, {
                     filter: 'blur(6px)',
                     scale: .80,
@@ -75,56 +136,12 @@ const Shows = () => {
                 })
             }
         })
-    }, { scope: containerRef })
 
-    const handleMouseEnter = (index: number) => {
-        if (!flyerRef.current || !flyerImgRef.current) return
-
-        const show = shows[index]
-        if (!show.flyer) return
-
-        flyerImgRef.current.src = show.flyer
-
-        if (!xToRef.current) {
-            xToRef.current = gsap.quickTo(flyerRef.current, 'x', { duration: 0.45, ease: 'power3' })
-            yToRef.current = gsap.quickTo(flyerRef.current, 'y', { duration: 0.45, ease: 'power3' })
+        return () => {
+            cleanups.forEach((fn) => fn())
+            mm.revert()
         }
-
-        gsap.set(flyerRef.current, { rotation: -6 })
-
-        gsap.to(flyerRef.current, {
-            scale: 1,
-            autoAlpha: 1,
-            rotation: 0,
-            duration: 0.5,
-            ease: 'back.out(1.7)',
-            overwrite: 'auto',
-        })
-
-        isVisibleRef.current = true
-    }
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!isVisibleRef.current || !xToRef.current || !yToRef.current) return
-
-        xToRef.current(e.clientX - 60)
-        yToRef.current(e.clientY - 180)
-    }
-
-    const handleMouseLeave = () => {
-        if (!flyerRef.current || !isVisibleRef.current) return
-
-        isVisibleRef.current = false
-
-        gsap.to(flyerRef.current, {
-            scale: 0.6,
-            autoAlpha: 0,
-            rotation: 6,
-            duration: 0.35,
-            ease: 'power2.in',
-            overwrite: 'auto',
-        })
-    }
+    }, { scope: containerRef })
 
     return (
         <section
@@ -143,9 +160,6 @@ const Shows = () => {
                     {shows.map((show, i) => (
                         <div
                             key={`mobile-${i}`}
-                            onMouseEnter={() => handleMouseEnter(i)}
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={handleMouseLeave}
                             className="group border-b border-(--white-color)/80 cursor-pointer py-5 flex items-center justify-between gap-3"
                         >
                             <div className="flex flex-col gap-1 min-w-0">
@@ -167,9 +181,6 @@ const Shows = () => {
                     {shows.map((show, i) => (
                         <div
                             key={`desktop-${i}`}
-                            onMouseEnter={() => handleMouseEnter(i)}
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={handleMouseLeave}
                             className="group border-b border-(--white-color)/80 cursor-pointer pt-5 pb-3 hover:py-8 transition-all duration-500 grid grid-cols-4 items-center"
                         >
                             <div className='flex items-center text-center gap-5 col-span-1'>

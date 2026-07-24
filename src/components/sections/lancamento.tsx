@@ -28,8 +28,7 @@ const Lancamento = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: '20% bottom',
-                    markers: true,
+                    start: isDesktop ? '20% bottom' : '30% bottom',
                     toggleActions: 'play none play none',
                 }
             });
@@ -76,12 +75,25 @@ const Lancamento = () => {
                         filter: 'blur(10px)',
                     },
                     {
-                        yPercent: -10,
+                        yPercent: 0,
                         autoAlpha: 1,
                         filter: 'blur(0px)',
                         duration: 1,
                         ease: 'power3.inOut',
                     }
+                ).fromTo(sangueVisceralElements[1],
+                    {
+                        yPercent: 20,
+                        autoAlpha: 0,
+                        filter: 'blur(10px)',
+                    },
+                    {
+                        yPercent: 0,
+                        autoAlpha: 1,
+                        filter: 'blur(0px)',
+                        duration: 1,
+                        ease: 'power3.inOut',
+                    }, '<'
                 )
             }
 
@@ -94,9 +106,10 @@ const Lancamento = () => {
 
     return (
         <section ref={containerRef} id="lancamento" className="relative h-screen bg-cover bg-center z-20" style={{ backgroundImage: `url(${lancamentoImgDesktop})` }}>
-            <div className="relative grid grid-cols-4 lg:grid-cols-12 justify-center items-center h-full w-full">
+            <div className="absolute inset-0 bg-black/50 -z-10"></div>
+            <div className="relative grid grid-cols-4 lg:grid-cols-12 justify-center items-center h-full w-full -translate-y-1/11 lg:translate-x-none">
                 <div className="group flex flex-col gap-1 col-start-2 lg:col-start-6 col-span-2 cursor-pointer">
-                    <p ref={ctaRef} className='w-full body-text text-right'>
+                    <p ref={ctaRef} className='w-full body-text text-right hidden lg:block'>
                         <span 
                             className='group-hover:tracking-[8px] transition-all duration-500 origin-right'
                         >
@@ -107,14 +120,21 @@ const Lancamento = () => {
                     <img 
                         src={capaSangueVisceral} 
                         alt="Capa - Sangue Visceral"
-                        className="border border-(--white-color)/60" 
+                        className="border border-(--white-color)/60 scale-140 lg:scale-none" 
                     />
                 </div>
 
-                <div ref={sangueVisceralRef} className="pointer-events-none absolute flex flex-col lg:flex-row justify-center w-full h-full items-center leading-0 giant-text pb-[7vh]">
-                    <span className="">Sangue</span>
-                    <span className="">visceral</span>
+                <div ref={sangueVisceralRef} className="pointer-events-none absolute flex flex-col lg:flex-row justify-center w-full h-full items-center giant-text pb-[7vh]">
+                    <span className="-translate-y-5/8 leading-none">Sangue</span>
+                    <span className="translate-y-5/8 leading-none">visceral</span>
                 </div>
+
+                <p ref={ctaRef} className='cursor-pointer absolute mx-auto origin-center bg-(--red-color) py-2 px-5 items-center -translate-x-1/2 left-1/2 top-7/8 body-text text-center flex lg:hidden'>
+                    <span className=''>
+                        quero ouvir
+                    </span>
+                    <ArrowDeg className='ml-1 mt-1.5 rotate-45' />
+                </p>
             </div>
         </section>
     )

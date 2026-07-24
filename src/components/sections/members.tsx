@@ -12,6 +12,7 @@ import indDesktop from '../../assets/media/desktop/IND.webp'
 import gabsMobile from '../../assets/media/mobile/GABS.webp'
 import tilasMobile from '../../assets/media/mobile/TILAS.webp'
 import reniMobile from '../../assets/media/mobile/RENI.webp'
+import indMobile from '../../assets/media/mobile/IND.webp'
 import vinceMobile from '../../assets/media/mobile/VINCE.webp'
 
 import { useMediaQuery } from '../../hooks/useMediaQuery'
@@ -22,7 +23,7 @@ const membersConfig = [
     {
         name: 'Ind',
         imageDesktop: indDesktop,
-        imageMobile: reniMobile,
+        imageMobile: indMobile,
     },
     {
         name: 'Reni',
@@ -113,10 +114,10 @@ const Members = () => {
                         clipPath: key === 0 ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
                         backgroundImage: `url(${member.image})`,
                         backgroundSize: 'cover',
-                        backgroundPosition: `${member.name === 'Gabs' ? 'left' : 'center'}`,
+                        backgroundPosition: 'center',
                     }}
                 >
-                    <span className="col-start-3 row-start-2 giant-text text-(--headline-font)">
+                    <span className="col-start-2 col-span-2 row-start-10 lg:col-start-3 lg:row-start-2 lowercase lg:capitalize text-center giant-text text-(--headline-font)">
                         {member.name}
                     </span>
                 </div>
