@@ -84,7 +84,9 @@ const Members = () => {
                     start: 'top top',
                     end: `+=${endDistance}%`,
                     pin: true,
-                    scrub: 2,
+                    scrub: 1,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
                 }
             });
 

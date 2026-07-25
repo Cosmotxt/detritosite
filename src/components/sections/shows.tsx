@@ -98,7 +98,7 @@ const Shows = () => {
             isDesktop: '(min-width: 1024px)',
             isMobile: '(max-width: 1023px)',
         }, (ctx) => {
-            const { isDesktop, isMobile } = ctx.conditions!
+            const { isDesktop } = ctx.conditions!
             const rowsContainer = isDesktop ? desktopRowsRef.current : mobileRowsRef.current
             if (!rowsContainer) return
 
@@ -107,9 +107,12 @@ const Shows = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 80%',
-                    end: 'top 30%',
-                    toggleActions: 'play none play none',
+                    start: 'top top',
+                    end: '+=150%',
+                    pin: true,
+                    scrub: 1,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
                 }
             })
 
@@ -118,23 +121,12 @@ const Shows = () => {
             ).to(rows,
                 { filter: 'blur(0px)', autoAlpha: 1, yPercent: 0, duration: 0.6, ease: 'power3.inOut', stagger: 0.12 },
                 '-=0.5'
+            ).to(contentRef.current,
+                { filter: 'blur(6px)', scale: 0.80, duration: 0.5, ease: 'power2.inOut' },
+                '+=0.2'
             )
 
             rows.forEach((row, index) => bindRow(row, index))
-
-            if (isDesktop || isMobile) {
-                console.log('mobile shows ok!')
-                gsap.to(contentRef.current, {
-                    filter: 'blur(6px)',
-                    scale: .80,
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: 'top top',
-                        pin: true,
-                        scrub: true,
-                    }
-                })
-            }
         })
 
         return () => {

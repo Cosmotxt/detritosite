@@ -13,6 +13,7 @@ import Musicas from './components/sections/musicas'
 import { useRumble } from './hooks/useRumble'
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger, useGSAP)
+ScrollTrigger.config({ ignoreMobileResize: true })
 
 function App() {
   const rumbleRef = useRumble()
@@ -23,7 +24,9 @@ function App() {
       wrapper: '#smooth-wrapper',
       content: '#smooth-content',
       smooth: 1,
-      effects: true,
+      smoothTouch: 0.1,
+      normalizeScroll: true,
+      ignoreMobileResize: true,
     })
 
     if (typeof window !== 'undefined') {
@@ -48,12 +51,10 @@ function App() {
             <Hero />
             <Lancamento />
           </div>
-          {/* <Members /> */}
+          <Members />
           <Musicas />
-          <div className="relative">
-            <Shows />
-            <Footer />
-          </div>
+          <Shows />
+          <Footer />
         </div>
       </div>
     </>

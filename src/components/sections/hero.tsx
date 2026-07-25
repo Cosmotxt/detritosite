@@ -40,6 +40,8 @@ const Hero = () => {
                 end: '+=100%',
                 pin: true,
                 pinSpacing: false,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
             })
         })
     })

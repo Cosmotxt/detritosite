@@ -8,10 +8,11 @@ import Draw from '../../assets/media/mobile/draw-footer.svg?react'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 import { useRef } from 'react'
 
-gsap.registerPlugin(SplitText)
+gsap.registerPlugin(ScrollTrigger, SplitText)
 
 interface SocialLink {
   text: string
@@ -40,6 +41,7 @@ const navLinks: NavLink[] = [
 
 const Footer = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<SVGSVGElement>(null);
   const drawRef = useRef<SVGSVGElement>(null);
   
@@ -128,7 +130,6 @@ const Footer = () => {
             scrollTrigger: {
               trigger: containerRef.current,
               start: '30% bottom',
-              markers: true,
               toggleActions: 'play none play none'
             }
           }
@@ -151,13 +152,27 @@ const Footer = () => {
             scrollTrigger: {
               trigger: containerRef.current,
               start: '80% bottom',
-              markers: true,
               toggleActions: 'play none restart none'
             }
           }
         )
       }
-    
+      
+      gsap.fromTo(footerRef.current,
+        { yPercent: 100 },
+        {
+          yPercent: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#shows',
+            start: 'bottom bottom',
+            end: 'bottom top',
+            scrub: 1,
+            invalidateOnRefresh: true,
+          }
+        }
+      )
+
     })
 
     return () => {
@@ -215,7 +230,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="absolute inset-0 h-screen translate-y-full bg-(--red-color) grid grid-cols-4 lg:grid-cols-12 grid-rows-1">
+    <footer ref={footerRef} className="relative h-screen bg-(--red-color) grid grid-cols-4 lg:grid-cols-12 grid-rows-1 will-change-transform">
       <div ref={containerRef} className="col-start-1 col-span-4 lg:col-start-4 lg:col-span-6 h-full flex flex-col">
         <SvgLogo ref={logoRef} className='svg-logo mt-14 hidden lg:flex' />
         <div className="w-full flex-1 min-h-0 grid grid-cols-6 grid-rows-6">
