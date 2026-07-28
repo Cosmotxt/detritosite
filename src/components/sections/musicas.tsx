@@ -135,7 +135,7 @@ const Musicas = () => {
             <FaArrowLeft onClick={prevSong} className='absolute -translate-y-1/2 translate-x-[-150%] lg:translate-x-[-200%] top-1/2 left-0 body-text cursor-pointer' />
             <FaArrowRight onClick={nextSong} className='absolute -translate-y-1/2 translate-x-[150%] lg:translate-x-[200%] top-1/2 right-0 body-text cursor-pointer' />
 
-            <div className="body-text absolute bottom-4 lg:bottom-0 left-1/2 translate-y-[150%] -translate-x-1/2 select-none">{`${currentSong?.id}/${TOTAL_MUSICAS}`}</div>
+            <div className="sm-text lg:body-text absolute bottom-4 lg:bottom-0 left-1/2 translate-y-[180%] lg:translate-y-[150%] -translate-x-1/2 select-none">{`${currentSong?.id}/${TOTAL_MUSICAS}`}</div>
           </div>
 
           {/* INFORMAÇÕES & CTA */}
@@ -143,7 +143,7 @@ const Musicas = () => {
 
             <div className="flex flex-col gap-5 mx-auto lg:mx-0">
               <div>
-                <Badge>{currentSong?.album}</Badge>
+                <Badge>{currentSong?.album || 'não lançado'}</Badge>
                 <h2 className='h2-text w-full leading-none mt-2 text-center lg:text-left'>{currentSong?.title}</h2>
               </div>
 

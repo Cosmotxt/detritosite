@@ -2,6 +2,7 @@ import Star from '../../assets/icons/star.svg?react'
 import InstagramSvg from '../../assets/icons/instagram.svg?react'
 import TikokSvg from '../../assets/icons/tiktok.svg?react'
 import EmailSvg from '../../assets/icons/email.svg?react'
+import CuscuzSvg from '../../assets/icons/cuscuz-2.svg?react'
 import Spotify from '../../assets/icons/spotify.svg?react'
 import SvgLogo from '../ui/SvgLogo.svg?react'
 import Draw from '../../assets/media/mobile/draw-footer.svg?react'
@@ -17,14 +18,41 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 interface SocialLink {
   text: string
   Icon: React.FC<React.SVGProps<SVGSVGElement>>
+  link: string,
   className: string
 }
 
 const socialLinks: SocialLink[] = [
-  { text: 'instagram', Icon: InstagramSvg, className: 'col-start-2 col-span-4 row-start-2 lg:row-start-1 lg:col-start-1 lg:col-span-2' },
-  { text: 'spotify', Icon: Spotify, className: 'col-start-2 col-span-4 row-start-3 lg:row-start-2 lg:col-start-3 lg:col-span-2' },
-  { text: 'tiktok', Icon: TikokSvg, className: 'col-start-2 col-span-4 row-start-4 lg:row-start-3 lg:col-start-2 lg:col-span-2' },
-  { text: 'detritoe@gmail.com', Icon: EmailSvg, className: 'col-start-2 col-span-4 text-center w-full row-start-6 lg:row-start-5 lg:col-start-2 lg:col-span-2' },
+  { 
+    text: 'instagram', 
+    Icon: InstagramSvg,
+    link: 'https://www.instagram.com/detritoespacial/',
+    className: 'col-start-2 col-span-4 row-start-2 lg:row-start-1 lg:col-start-1 lg:col-span-2' 
+  },
+  { 
+    text: 'spotify', 
+    Icon: Spotify,
+    link: 'https://open.spotify.com/intl-pt/artist/3mxopIe9nts1L5O5SzFgBu?si=Cik-fbYOTfa2_T_cVIAntQ',
+    className: 'col-start-2 col-span-4 row-start-3 lg:row-start-2 lg:col-start-3 lg:col-span-2' 
+  },
+  { 
+    text: 'tiktok', 
+    Icon: TikokSvg,
+    link: 'https://www.tiktok.com/@detrito.espacial',
+    className: 'col-start-2 col-span-4 row-start-4 lg:row-start-3 lg:col-start-2 lg:col-span-2' 
+  },
+  { 
+    text: 'cuscuz records', 
+    Icon: CuscuzSvg,
+    link: 'https://www.instagram.com/cuscuzrecords/',
+    className: 'row-start-5 lg:row-start-4 col-start-2 col-span-4 lg:col-start-3 lg:col-span-2' 
+  },
+  { 
+    text: 'detritoe@gmail.com', 
+    Icon: EmailSvg,
+    link: 'detritoe@gmail.com',
+    className: 'col-start-2 col-span-4 text-center w-full row-start-6 lg:row-start-5 lg:col-start-2 lg:col-span-2' 
+  },
 ]
 
 interface NavLink {
@@ -162,11 +190,9 @@ const Footer = () => {
         { yPercent: 100 },
         {
           yPercent: 0,
-          ease: 'none',
           scrollTrigger: {
-            trigger: '#shows',
+            trigger: footerRef.current,
             start: 'bottom bottom',
-            end: 'bottom top',
             scrub: 1,
             invalidateOnRefresh: true,
           }
@@ -225,38 +251,30 @@ const Footer = () => {
     })
   }, { scope: containerRef })
 
-  const handleCuscuzClick = () => {
-    window.open('https://cuscuzrecords.com', '_blank', 'noopener')
-  }
-
   return (
-    <footer ref={footerRef} className="relative h-screen bg-(--red-color) grid grid-cols-4 lg:grid-cols-12 grid-rows-1 will-change-transform">
+    <footer ref={footerRef} className="absolute inset-0 h-screen bg-(--red-color) grid grid-cols-4 lg:grid-cols-12 grid-rows-1 will-change-transform">
       <div ref={containerRef} className="col-start-1 col-span-4 lg:col-start-4 lg:col-span-6 h-full flex flex-col">
         <SvgLogo ref={logoRef} className='svg-logo mt-14 hidden lg:flex' />
         <div className="w-full flex-1 min-h-0 grid grid-cols-6 grid-rows-6">
           <ul className="col-start-1 grid grid-cols-subgrid grid-rows-subgrid col-span-6 row-span-12 gap-6 body-text">
-            {socialLinks.map(({ text, Icon, className }) => (
+            {socialLinks.map(({ text, Icon, link, className }) => (
               <li
                 key={text}
                 data-social
                 className={`cursor-pointer ${className} flex items-center justify-center`}
               >
-                <div data-container className="relative flex items-center justify-center space-x-2">
-                  <Star data-arrow className='w-4 h-4' />
-                  <span data-text className="lg:inline-block flex text-center">{text}</span>
-                  <Star data-arrow className='w-4 h-4 flex lg:hidden' />
-                  <div data-icon className="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none z-10 text-(--white-color)">
-                    <Icon className="w-12 h-12" />
+                <a href={text === "detritoe@gmail.com"? "mailto:" + link : link} target="_blank" rel="noopener noreferrer">
+                  <div data-container className="relative flex items-center justify-center space-x-2">
+                    <Star data-arrow className='w-4 h-4' />
+                    <span data-text className="lg:inline-block flex text-center">{text}</span>
+                    <Star data-arrow className='w-4 h-4 flex lg:hidden' />
+                    <div data-icon className="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none z-10 text-(--white-color)">
+                      <Icon className={`${text === "cuscuz records" ? "w-28 h-28 fill-white" : "w-12 h-12" }`} />
+                    </div>
                   </div>
-                </div>
+                </a>
               </li>
             ))}
-
-            <li className="cursor-pointer row-start-5 lg:row-start-4 col-start-2 col-span-4 lg:col-start-3 lg:col-span-2 flex items-center justify-center space-x-2" onClick={handleCuscuzClick}>
-              <Star className='w-4 h-4' />
-              <span data-text className="lg:inline-block flex text-center">cuscuz records</span>
-              <Star data-arrow className='w-4 h-4 flex lg:hidden' />
-            </li>
 
             {navLinks.map(({ label, target, className }) => (
               <li

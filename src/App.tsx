@@ -23,8 +23,8 @@ function App() {
     const smoother = ScrollSmoother.create({
       wrapper: '#smooth-wrapper',
       content: '#smooth-content',
-      smooth: 1,
-      smoothTouch: 0.1,
+      smooth: true,
+      smoothTouch: 0.008,
       normalizeScroll: true,
       ignoreMobileResize: true,
     })
@@ -53,8 +53,10 @@ function App() {
           </div>
           <Members />
           <Musicas />
-          <Shows />
-          <Footer />
+          <div className="relative">
+            <Shows />
+            <Footer />
+          </div>
         </div>
       </div>
     </>

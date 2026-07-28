@@ -1,11 +1,10 @@
 import lancamentoImgDesktop from '../../assets/media/desktop/LANCAMENTO.webp'
-// import lancamentoImgMobile from '../../assets/media/mobile/LANCAMENTO.webp'
-import capaSangueVisceral from '../../assets/media/desktop/COVERS/capa-sangue-visceral.webp'
 import ArrowDeg from '../../assets/icons/arrowDeg.svg?react'
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import scrollTrigger from 'gsap/ScrollTrigger';
+import { Button } from '../ui/Button';
 gsap.registerPlugin(scrollTrigger);
 
 const Lancamento = () => {
@@ -28,14 +27,36 @@ const Lancamento = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: isDesktop ? '20% bottom' : '30% bottom',
-                    toggleActions: 'play none play none',
+                    start: 'top bottom',
+                    end: 'top 20%',
+                    scrub: 1,
+                    immediateRender: false
                 }
             });
 
             const sangueVisceralElements = gsap.utils.toArray(sangueVisceralRef.current!.children) as HTMLElement[];
 
             if (isDesktop) {
+                gsap.set(containerRef.current, {
+                    clipPath: 'inset(0% 18% 0% 18%)',
+                });
+
+                gsap.fromTo(containerRef.current, 
+                    {
+                        clipPath: 'inset(0% 18% 0% 18%)',
+                    }, 
+                    {
+                        clipPath: 'inset(0% 0% 0% 0%)',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 80%',
+                            end: 'top top',
+                            scrub: 1,
+                            immediateRender: false
+                        }
+                    },
+                )
+
                 tl.fromTo(sangueVisceralElements[0],
                     {
                         xPercent: -120,
@@ -105,10 +126,20 @@ const Lancamento = () => {
     }, {scope: containerRef});
 
     return (
-        <section ref={containerRef} id="lancamento" className="relative h-screen bg-cover bg-center z-20" style={{ backgroundImage: `url(${lancamentoImgDesktop})` }}>
+        <section 
+            ref={containerRef} 
+            id="lancamento" 
+            className="relative h-screen bg-cover bg-center z-20" 
+            style={{ 
+                backgroundImage: `url(${lancamentoImgDesktop})`, 
+            }}>
             <div className="absolute inset-0 bg-black/50 -z-10"></div>
-            <div className="relative grid grid-cols-4 lg:grid-cols-12 justify-center items-center h-full w-full -translate-y-1/11 lg:translate-x-none">
-                <div className="group flex flex-col gap-1 col-start-2 lg:col-start-6 col-span-2 cursor-pointer">
+            <div className="relative flex flex-col lg:grid lg:grid-cols-12 justify-center items-center h-full w-full lg:translate-y-0 lg:translate-x-0">
+                <a 
+                    href='https://open.spotify.com/intl-pt/album/1zk9Os0BWyjKkKR8vVraJH?si=lVQL7XFeSAaF6iioq1NaNQ' 
+                    target='_blank' rel='noopener noreferrer' 
+                    className="group flex flex-col items-center justify-center gap-[6vh] lg:gap-1 col-start-2 lg:col-start-6 lg:col-span-2 w-[70vw] lg:w-fit cursor-pointer"
+                >
                     <p ref={ctaRef} className='w-full body-text text-right hidden lg:block'>
                         <span 
                             className='group-hover:tracking-[8px] transition-all duration-500 origin-right'
@@ -117,24 +148,24 @@ const Lancamento = () => {
                         </span>
                         <ArrowDeg className='inline ml-1 transform rotate-35 group-hover:rotate-45 group-hover:scale-120 transition-transform duration-500' />
                     </p>
+                    <span className="leading-20 giant-text text-center lg:hidden">sangue visceral</span>
                     <img 
-                        src={capaSangueVisceral} 
+                        src="https://res.cloudinary.com/dw5b1yiwd/image/upload/v1785261617/CAPA_j0f6rm.webp" 
                         alt="Capa - Sangue Visceral"
-                        className="border border-(--white-color)/60 scale-140 lg:scale-none" 
+                        className="border border-(--white-color)/60" 
                     />
-                </div>
+
+                    <div className='lg:hidden'>
+                        <Button icon={<ArrowDeg className="rotate-45" />}>
+                            OUVIR
+                        </Button>   
+                    </div>
+                </a>                       
 
                 <div ref={sangueVisceralRef} className="pointer-events-none absolute flex flex-col lg:flex-row justify-center w-full h-full items-center giant-text pb-[7vh]">
-                    <span className="-translate-y-5/8 leading-none">Sangue</span>
-                    <span className="translate-y-5/8 leading-none">visceral</span>
-                </div>
-
-                <p ref={ctaRef} className='cursor-pointer absolute mx-auto origin-center bg-(--red-color) py-2 px-5 items-center -translate-x-1/2 left-1/2 top-7/8 body-text text-center flex lg:hidden'>
-                    <span className=''>
-                        quero ouvir
-                    </span>
-                    <ArrowDeg className='ml-1 mt-1.5 rotate-45' />
-                </p>
+                    <span className="leading-none hidden lg:flex">Sangue</span>
+                    <span className="leading-none hidden lg:flex">visceral</span>
+                </div>                
             </div>
         </section>
     )
