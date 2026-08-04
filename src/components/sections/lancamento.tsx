@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import scrollTrigger from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
+import BurnedEdge from '../ui/BurnedEdge';
 gsap.registerPlugin(scrollTrigger);
 
 const Lancamento = () => {
@@ -109,11 +110,8 @@ const Lancamento = () => {
         <section 
             ref={containerRef} 
             id="lancamento" 
-            className="relative h-screen bg-cover bg-center z-20" 
-            style={{ 
-                backgroundImage: `url(${lancamentoImgDesktop})`, 
-            }}>
-            <div className="absolute inset-0 bg-black/50 -z-10"></div>
+            className="relative h-screen z-20">
+            <BurnedEdge imageUrl={lancamentoImgDesktop} overlayOpacity={0.5} className="-z-20" />
             <div className="relative flex flex-col lg:grid lg:grid-cols-12 justify-center items-center h-full w-full lg:translate-y-0 lg:translate-x-0">
                 <a 
                     href='https://open.spotify.com/intl-pt/album/1zk9Os0BWyjKkKR8vVraJH?si=lVQL7XFeSAaF6iioq1NaNQ' 
