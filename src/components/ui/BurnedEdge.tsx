@@ -173,14 +173,14 @@ interface BurnedEdgeProps {
   className?: string;
 }
 
-const BurnedEdge: React.FC<BurnedEdgeProps> = ({ 
+const BurnedEdge: React.FC<BurnedEdgeProps> = ({
   imageUrl,
   burnColor = '#655513',
   overlayOpacity = 0.5,
   className = ''
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [texSize, setTexSize] = useState({ w: 1, h: 1 });
+  // const [texSize, setTexSize] = useState({ w: 1, h: 1 });
 
   useGSAP(() => {
     const canvas = canvasRef.current;
@@ -205,11 +205,11 @@ const BurnedEdge: React.FC<BurnedEdgeProps> = ({
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     const positions = [
       -1, -1,
-       1, -1,
-      -1,  1,
-      -1,  1,
-       1, -1,
-       1,  1,
+      1, -1,
+      -1, 1,
+      -1, 1,
+      1, -1,
+      1, 1,
     ];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
@@ -219,7 +219,7 @@ const BurnedEdge: React.FC<BurnedEdgeProps> = ({
     const texResolutionUniformLocation = gl.getUniformLocation(program, 'u_texResolution');
     const burnColorUniformLocation = gl.getUniformLocation(program, 'u_burnColor');
     const overlayOpacityUniformLocation = gl.getUniformLocation(program, 'u_overlayOpacity');
-    
+
     // Texture
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -234,7 +234,7 @@ const BurnedEdge: React.FC<BurnedEdgeProps> = ({
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       currentTexSize = { w: image.width, h: image.height };
-      setTexSize(currentTexSize);
+      // setTexSize(currentTexSize);
       render();
     };
     image.src = imageUrl;
@@ -261,7 +261,7 @@ const BurnedEdge: React.FC<BurnedEdgeProps> = ({
       gl.uniform1f(scrollUniformLocation, scrollValue);
       gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
       gl.uniform2f(texResolutionUniformLocation, currentTexSize.w, currentTexSize.h);
-      
+
       const bColor = hexToRgb(burnColor);
       gl.uniform3f(burnColorUniformLocation, bColor[0], bColor[1], bColor[2]);
       gl.uniform1f(overlayOpacityUniformLocation, overlayOpacity);
@@ -277,10 +277,10 @@ const BurnedEdge: React.FC<BurnedEdgeProps> = ({
       end: 'bottom bottom',
       onUpdate: (self) => {
         scrollValue = self.scroll();
-        render(); 
+        render();
       }
     });
-    
+
     const handleResize = () => render();
     window.addEventListener('resize', handleResize);
 
@@ -295,8 +295,8 @@ const BurnedEdge: React.FC<BurnedEdgeProps> = ({
   }, [imageUrl, burnColor, overlayOpacity]);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className={`absolute inset-0 w-full h-full ${className}`}
       style={{ pointerEvents: 'none' }}
     />

@@ -1,4 +1,4 @@
-import React, { useRef, useImperativeHandle, forwardRef, useEffect } from 'react';
+import { useRef, useImperativeHandle, forwardRef, useEffect } from 'react';
 
 const vertexShaderSource = `
   attribute vec2 a_position;
@@ -184,7 +184,7 @@ const BurnCarousel = forwardRef<BurnCarouselRef, BurnCarouselProps>(({
 }, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const glRef = useRef<WebGLRenderingContext | null>(null);
-  const renderRef = useRef<() => void>();
+  const renderRef = useRef<() => void>(null);
   const progressRef = useRef(0);
 
   useImperativeHandle(ref, () => ({
