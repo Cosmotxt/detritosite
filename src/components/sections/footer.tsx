@@ -23,35 +23,35 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
-  { 
-    text: 'instagram', 
+  {
+    text: 'instagram',
     Icon: InstagramSvg,
     link: 'https://www.instagram.com/detritoespacial/',
-    className: 'col-start-2 col-span-4 row-start-2 lg:row-start-1 lg:col-start-1 lg:col-span-2' 
+    className: 'col-start-2 col-span-4 row-start-2 lg:row-start-1 lg:col-start-1 lg:col-span-2'
   },
-  { 
-    text: 'spotify', 
+  {
+    text: 'spotify',
     Icon: Spotify,
     link: 'https://open.spotify.com/intl-pt/artist/3mxopIe9nts1L5O5SzFgBu?si=Cik-fbYOTfa2_T_cVIAntQ',
-    className: 'col-start-2 col-span-4 row-start-3 lg:row-start-2 lg:col-start-3 lg:col-span-2' 
+    className: 'col-start-2 col-span-4 row-start-3 lg:row-start-2 lg:col-start-3 lg:col-span-2'
   },
-  { 
-    text: 'tiktok', 
+  {
+    text: 'tiktok',
     Icon: TikokSvg,
     link: 'https://www.tiktok.com/@detrito.espacial',
-    className: 'col-start-2 col-span-4 row-start-4 lg:row-start-3 lg:col-start-2 lg:col-span-2' 
+    className: 'col-start-2 col-span-4 row-start-4 lg:row-start-3 lg:col-start-2 lg:col-span-2'
   },
-  { 
-    text: 'cuscuz records', 
+  {
+    text: 'cuscuz records',
     Icon: CuscuzSvg,
     link: 'https://www.instagram.com/cuscuzrecords/',
-    className: 'row-start-5 lg:row-start-4 col-start-2 col-span-4 lg:col-start-3 lg:col-span-2' 
+    className: 'row-start-5 lg:row-start-4 col-start-2 col-span-4 lg:col-start-3 lg:col-span-2'
   },
-  { 
-    text: 'detritoe@gmail.com', 
+  {
+    text: 'detritoe@gmail.com',
     Icon: EmailSvg,
     link: 'detritoe@gmail.com',
-    className: 'col-start-2 col-span-4 text-center w-full row-start-6 lg:row-start-5 lg:col-start-2 lg:col-span-2' 
+    className: 'col-start-2 col-span-4 text-center w-full row-start-6 lg:row-start-5 lg:col-start-1 lg:col-span-3'
   },
 ]
 
@@ -62,7 +62,7 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { label: 'nossa música', target: '#musicas', className: 'row-start-2 lg:row-start-1 lg:col-start-6 col-span-2' },
+  { label: 'nossa música', target: '#musicas', className: 'row-start-2 lg:row-start-1 lg:col-start-6 lg:col-span-3 col-span-2' },
   { label: 'próximos shows', target: '#shows', className: 'row-start-2 lg:row-start-2 lg:col-start-5 col-span-2' },
   { label: 'links relevantes', target: '#members', className: 'row-start-2 lg:row-start-3 lg:col-start-4 col-span-2' },
 ]
@@ -72,13 +72,13 @@ const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<SVGSVGElement>(null);
   const drawRef = useRef<SVGSVGElement>(null);
-  
+
   useGSAP((_context, contextSafe) => {
     if (!containerRef.current) return
     const mm = gsap.matchMedia()
     const items = containerRef.current.querySelectorAll<HTMLElement>('[data-social]')
     const splits: SplitText[] = []
-    
+
     mm.add({
       isDesktop: '(min-width: 1024px)',
       isMobile: '(max-width: 1023px)'
@@ -92,13 +92,13 @@ const Footer = () => {
         const arrowEl = item.querySelector<HTMLElement>('[data-arrow]')
         const iconEl = item.querySelector<HTMLElement>('[data-icon]')
         if (!container || !textEl || !arrowEl || !iconEl) return
-  
+
         const split = SplitText.create(textEl, { type: 'chars' })
         splits.push(split)
         const chars = split.chars as HTMLElement[]
-  
+
         const tl = gsap.timeline({ paused: true })
-        
+
         tl.to(chars, {
           x: (_i, el) => {
             const r = container.getBoundingClientRect()
@@ -117,14 +117,14 @@ const Footer = () => {
           stagger: 0.025,
           ease: 'power3.in',
         }, 0)
-  
+
         tl.to(arrowEl, {
           rotation: 90,
           autoAlpha: 0,
           duration: 0.25,
           ease: 'power2.in',
         }, 0)
-  
+
         tl.fromTo(iconEl, {
           scale: 0.3,
           filter: 'blur(8px)',
@@ -136,11 +136,11 @@ const Footer = () => {
           duration: 0.4,
           ease: 'power3.out',
         }, 0.1)
-  
-        
+
+
         const onEnter = safe(() => tl.play())
         const onLeave = safe(() => tl.reverse())
-        
+
         item.addEventListener('mouseenter', onEnter)
         item.addEventListener('mouseleave', onLeave)
       })
@@ -148,9 +148,9 @@ const Footer = () => {
       const svgFooterDesktop = logoRef.current!.querySelectorAll('path')
       const svgFooterMobile = drawRef.current!.querySelectorAll('svg g g path')
 
-      if(isDesktop) {
+      if (isDesktop) {
         console.log('desktop ok.')
-        gsap.to(svgFooterDesktop, 
+        gsap.to(svgFooterDesktop,
           {
             strokeDashoffset: 0,
             ease: 'power3.out',
@@ -163,8 +163,8 @@ const Footer = () => {
           }
         )
       }
-      
-      if(isMobile) {
+
+      if (isMobile) {
         console.log('mobile ok.')
         svgFooterMobile.forEach((el) => {
           const p = el as SVGPathElement
@@ -185,25 +185,14 @@ const Footer = () => {
           }
         )
       }
-      
-      gsap.fromTo(footerRef.current,
-        { yPercent: 100 },
-        {
-          yPercent: 0,
-          scrollTrigger: {
-            trigger: footerRef.current,
-            start: 'bottom bottom',
-            scrub: 1,
-            invalidateOnRefresh: true,
-          }
-        }
-      )
+
+
 
     })
 
     return () => {
       mm.revert();
-      splits.forEach(s => { try { s.revert() } catch {} })
+      splits.forEach(s => { try { s.revert() } catch { } })
     }
   }, { scope: containerRef })
 
@@ -252,7 +241,7 @@ const Footer = () => {
   }, { scope: containerRef })
 
   return (
-    <footer ref={footerRef} className="absolute inset-0 h-screen bg-(--red-color) grid grid-cols-4 lg:grid-cols-12 grid-rows-1 will-change-transform">
+    <footer ref={footerRef} className="absolute bottom-0 w-full h-screen bg-(--red-color) grid grid-cols-4 lg:grid-cols-12 grid-rows-1 will-change-transform z-50">
       <div ref={containerRef} className="col-start-1 col-span-4 lg:col-start-4 lg:col-span-6 h-full flex flex-col">
         <SvgLogo ref={logoRef} className='svg-logo mt-14 hidden lg:flex' />
         <div className="w-full flex-1 min-h-0 grid grid-cols-6 grid-rows-6">
@@ -263,13 +252,13 @@ const Footer = () => {
                 data-social
                 className={`cursor-pointer ${className} flex items-center justify-center`}
               >
-                <a href={text === "detritoe@gmail.com"? "mailto:" + link : link} target="_blank" rel="noopener noreferrer">
+                <a href={text === "detritoe@gmail.com" ? "mailto:" + link : link} target="_blank" rel="noopener noreferrer">
                   <div data-container className="relative flex items-center justify-center space-x-2">
                     <Star data-arrow className='w-4 h-4' />
                     <span data-text className="lg:inline-block flex text-center">{text}</span>
                     <Star data-arrow className='w-4 h-4 flex lg:hidden' />
                     <div data-icon className="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none z-10 text-(--white-color)">
-                      <Icon className={`${text === "cuscuz records" ? "w-28 h-28 fill-white" : "w-12 h-12" }`} />
+                      <Icon className={`${text === "cuscuz records" ? "w-28 h-28 fill-white" : "w-12 h-12"}`} />
                     </div>
                   </div>
                 </a>

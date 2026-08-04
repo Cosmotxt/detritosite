@@ -136,17 +136,7 @@ const Shows = () => {
                 '-=0.6'
             )
 
-            gsap.to(contentRef.current, { 
-                filter: 'blur(6px)', 
-                scale: 0.80, 
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top top',
-                    // end: 'bottom bottom',
-                    scrub: 1,
-                    pin: true,
-                }
-            })
+
 
             rows.forEach((row, index) => bindRow(row, index))
         })

@@ -37,26 +37,6 @@ const Lancamento = () => {
             const sangueVisceralElements = gsap.utils.toArray(sangueVisceralRef.current!.children) as HTMLElement[];
 
             if (isDesktop) {
-                gsap.set(containerRef.current, {
-                    clipPath: 'inset(0% 18% 0% 18%)',
-                });
-
-                gsap.fromTo(containerRef.current, 
-                    {
-                        clipPath: 'inset(0% 18% 0% 18%)',
-                    }, 
-                    {
-                        clipPath: 'inset(0% 0% 0% 0%)',
-                        scrollTrigger: {
-                            trigger: containerRef.current,
-                            start: 'top 80%',
-                            end: 'top top',
-                            scrub: 1,
-                            immediateRender: false
-                        }
-                    },
-                )
-
                 tl.fromTo(sangueVisceralElements[0],
                     {
                         xPercent: -120,

@@ -16,10 +16,27 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: '1942';
+    src: url('/fonts/1942.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'fstein';
+    src: url('/fonts/fstein.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 :root {
     --headline-font: 'kingjola', sans-serif;
-    --uglyqua-font: 'uglyqua', sans-serif;
+    --uglyqua-font: 'fstein', sans-serif; /* Para voltar para a uglyqua original, troque por: 'uglyqua', sans-serif */
+    --uglyqua-original: 'uglyqua', sans-serif;
 
     --extragiant-text: 18rem;
     --giant-text: 10rem;

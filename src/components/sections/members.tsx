@@ -98,6 +98,11 @@ const Members = () => {
                     );
                 }
             });
+
+            tl.to(containerElements, {
+                filter: 'blur(6px)',
+                ease: 'power2.inOut'
+            });
         });
 
         return () => {
