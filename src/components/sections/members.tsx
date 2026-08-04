@@ -2,6 +2,8 @@ import { useRef, useMemo } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import BurnCarousel from '../ui/BurnCarousel'
+import type { BurnCarouselRef } from '../ui/BurnCarousel'
 
 // @ts-ignore
 import vinceDesktop from '../../assets/media/desktop/VINCE.webp'
@@ -50,6 +52,7 @@ const membersConfig = [
 
 const Members = () => {
     const container = useRef<HTMLDivElement | null>(null);
+    const burnCarouselRef = useRef<BurnCarouselRef>(null);
     const isDesktop = useMediaQuery('(min-width: 1024px)');
 
     const membersData = useMemo(
@@ -70,10 +73,7 @@ const Members = () => {
             isMobile: '(max-width: 1023px)',
         }, (ctx) => {
             const { isDesktop } = ctx.conditions || {};
-            const containerElements = gsap.utils.toArray(container.current!.children) as HTMLElement[];
-
-            if (containerElements.length === 0) return;
-
+            
             const endDistance = isDesktop
                 ? membersData.length * 100
                 : membersData.length * 80;
@@ -90,19 +90,32 @@ const Members = () => {
                 }
             });
 
-            containerElements.forEach((el, index) => {
-                if (index > 0) {
-                    tl.fromTo(el,
-                        { clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' },
-                        { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'power2.inOut' }
-                    );
+            const progressObj = { p: 0 };
+            const names = gsap.utils.toArray('.member-name', container.current) as HTMLElement[];
+            const numTransitions = membersData.length - 1;
+
+            // Animate progressObj from 0 to 4 during the first part of the scroll (duration = numTransitions)
+            tl.to(progressObj, {
+                p: numTransitions,
+                ease: 'none',
+                duration: numTransitions,
+                onUpdate: () => {
+                    if (burnCarouselRef.current) {
+                        burnCarouselRef.current.setProgress(progressObj.p);
+                    }
+                }
+            }, 0);
+
+            // Animate the member names fading in and out
+            names.forEach((_name, i) => {
+                if (i < names.length - 1) {
+                    tl.to(names[i], { opacity: 0, duration: 0.4, ease: 'power2.inOut' }, i + 0.3);
+                    tl.to(names[i+1], { opacity: 1, duration: 0.4, ease: 'power2.inOut' }, i + 0.3);
                 }
             });
 
-            tl.to(containerElements, {
-                filter: 'blur(6px)',
-                ease: 'power2.inOut'
-            });
+            // Hold on the final member (Tilas) while the footer slides up over the section during the last portion of scroll
+            tl.to({}, { duration: 1 }, numTransitions);
         });
 
         return () => {
@@ -110,21 +123,25 @@ const Members = () => {
         };
     }, { scope: container, dependencies: [membersData], revertOnUpdate: true });
 
+    const carouselImages = useMemo(() => membersData.map(m => m.image), [membersData]);
+
     return (
         <div ref={container} id="members" className="relative h-screen overflow-hidden bg-(--dark-color)">
+            <BurnCarousel 
+                ref={burnCarouselRef} 
+                images={carouselImages} 
+                className="z-10" 
+            />
             {membersData.map((member, key) => (
                 <div
-                    className="absolute h-full w-full top-0 left-0 grid grid-cols-4 lg:grid-cols-12"
+                    className="absolute inset-0 grid grid-cols-4 lg:grid-cols-12 pointer-events-none"
                     key={key}
-                    style={{
-                        zIndex: 10 + key,
-                        clipPath: key === 0 ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
-                        backgroundImage: `url(${member.image})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
+                    style={{ zIndex: 20 }}
                 >
-                    <span className="col-start-2 col-span-2 row-start-10 lg:col-start-3 lg:row-start-2 lowercase lg:capitalize text-center giant-text text-(--headline-font)">
+                    <span 
+                        className="member-name col-start-2 col-span-2 row-start-10 lg:col-start-3 lg:row-start-2 lowercase lg:capitalize text-center giant-text text-(--headline-font)"
+                        style={{ opacity: key === 0 ? 1 : 0 }}
+                    >
                         {member.name}
                     </span>
                 </div>

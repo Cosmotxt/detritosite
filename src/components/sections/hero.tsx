@@ -20,21 +20,7 @@ const Hero = () => {
             isDesktop: '(min-width: 1024px)',
             isMobile: '(max-width: 1023px)'
         }, () => {
-            const phrases = gsap.utils.toArray(phrasesRef.current!.children) as Element[] | [];
-
-            gsap.fromTo(phrases,
-                {
-                    filter: 'blur(10px)',
-                    autoAlpha: 0,
-                },
-                {
-                    filter: 'blur(0px)',
-                    autoAlpha: 1,
-                    ease: 'power3.inOut',
-                    duration: 1.1,
-                    stagger: .2
-                }
-            )
+            // Animation removed for future preloader integration
 
             ScrollTrigger.create({
                 trigger: containerRef.current,

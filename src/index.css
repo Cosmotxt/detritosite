@@ -35,7 +35,7 @@
 
 :root {
     --headline-font: 'kingjola', sans-serif;
-    --uglyqua-font: 'fstein', sans-serif; /* Para voltar para a uglyqua original, troque por: 'uglyqua', sans-serif */
+    --uglyqua-font: 'fstein', sans-serif;
     --uglyqua-original: 'uglyqua', sans-serif;
 
     --extragiant-text: 18rem;
@@ -130,9 +130,12 @@
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+
 .no-scrollbar {
-    -ms-overflow-style: none;  /* IE/Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 /* Rumble overlay — grão analógico animado (cintila/vibra) */
@@ -149,7 +152,7 @@
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
-       only screen and (min-resolution: 192dpi) {
+only screen and (min-resolution: 192dpi) {
     .rumble-overlay {
         background-size: 55px 55px;
         opacity: 0.25;
