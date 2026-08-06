@@ -11,10 +11,12 @@ const Lancamento = () => {
     const sangueVisceralRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const ctaRef = useRef<HTMLParagraphElement | null>(null)
+    const contentRef = useRef<HTMLAnchorElement | null>(null)
 
     useGSAP(() => {
         if (!sangueVisceralRef.current) return;
         if (!containerRef.current) return;
+        if (!contentRef.current) return;
 
         const mm = gsap.matchMedia();
 
@@ -69,20 +71,8 @@ const Lancamento = () => {
                     }, '-=.5'
                 )
             } else if (isMobile) {
-                tl.fromTo(sangueVisceralElements[0],
-                    {
-                        yPercent: -20,
-                        autoAlpha: 0,
-                        filter: 'blur(10px)',
-                    },
-                    {
-                        yPercent: 0,
-                        autoAlpha: 1,
-                        filter: 'blur(0px)',
-                        duration: 1,
-                        ease: 'power3.inOut',
-                    }
-                ).fromTo(sangueVisceralElements[1],
+                const mobileElements = gsap.utils.toArray(contentRef.current!.children) as HTMLElement[];
+                tl.fromTo(mobileElements,
                     {
                         yPercent: 20,
                         autoAlpha: 0,
@@ -93,8 +83,9 @@ const Lancamento = () => {
                         autoAlpha: 1,
                         filter: 'blur(0px)',
                         duration: 1,
+                        stagger: 0.15,
                         ease: 'power3.inOut',
-                    }, '<'
+                    }
                 )
             }
 
@@ -114,6 +105,7 @@ const Lancamento = () => {
             <div className="h-full w-full absolute inset-0 bg-black/40 -z-10"></div>
             <div className="relative flex flex-col lg:grid lg:grid-cols-12 justify-center items-center h-full w-full lg:translate-y-0 lg:translate-x-0">
                 <a 
+                    ref={contentRef}
                     href='https://open.spotify.com/intl-pt/album/1zk9Os0BWyjKkKR8vVraJH?si=lVQL7XFeSAaF6iioq1NaNQ' 
                     target='_blank' rel='noopener noreferrer' 
                     className="group flex flex-col items-center justify-center gap-[6vh] lg:gap-1 col-start-2 lg:col-start-6 lg:col-span-2 w-[70vw] lg:w-fit cursor-pointer"
